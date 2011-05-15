@@ -4,4 +4,4 @@ Post content &copy; 2011 Randy Secrist.
 
 HTML and CSS adopted from [Jekyll](http://github.com/mojombo/jekyll).
 
-Based on [Mark McGranaghan blog](http://github.com/mmcgrana/mmcgrana.github.com).
+Based on the blogs of [Mark McGranaghan](http://mmcgrana.github.com/) and Alvaro Videla(http://videlalvaro.github.com/).
