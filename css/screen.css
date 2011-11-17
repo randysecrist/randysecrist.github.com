@@ -31,13 +31,14 @@ img.floatleft {
 }
 
 body {
-  background-color: #D1EAEF;
+  background-color: #F9D9B0;
   font: 13.34px "helvetica neue", helvetica, arial, clean, sans-serif;
   *font-size: small;
   text-align: center;
 }
 
 h1, h2, h3, h4, h5, h6 {
+  color: #8F6D3F;
   font-size: 100%;
 }
 
@@ -52,12 +53,12 @@ p {
 
 a:link,
 a:visited {
-  color: #006A7F;
+  color: #E68D17;
   text-decoration: none;
 }
 
 a:hover {
-  color: #33CFCC;
+  color: #6D4003;
 }
 
 
@@ -111,14 +112,14 @@ ul.posts {
 
   .site .title a:link,
   .site .title a:visited {
-    color: #006A7F;
+    color: #6D4003;
     text-decoration: none;
     font-size: 4em;
     margin-left: -.5em;
   }
 
   .site .title a:hover {
-    color: #33CFCC;
+    color: #E68D17;
   }
 
   .site .title a.extra {
@@ -150,7 +151,7 @@ ul.posts {
     }
 
       .site .footer .contact a {
-        color: #8085C1;
+        color: #E68D17;
       }
 
     .site .footer .rss {
