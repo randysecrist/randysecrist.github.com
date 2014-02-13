@@ -1,0 +1,24 @@
+<nav id="main-nav" style="margin-top: 0px;" class="col-md-3 collapse hidden-sm hidden-xs">
+
+  <div class="row">
+    <div class="list-group">
+      <a href="/" class="list-group-item"><i class="fa fa-home"></i>&nbsp;Home</p>
+      <a href="/about" class="list-group-item"><i class="fa fa-question-circle"></i>&nbsp;About</p>
+      <a href="//github.com/randysecrist" class="list-group-item"><i class="fa fa-github"></i>&nbsp;Github</a>
+      <a href="//twitter.com/randysecrist" class="list-group-item"><i class="fa fa-twitter"></i>&nbsp;Twitter</a>
+      <a href="//www.linkedin.com/profile/view?id=89413" class="list-group-item"><i class="fa fa-linkedin"></i>&nbsp;Linked In</a>
+      <a href="/archives" class="list-group-item"><i class="fa fa-archive"></i>&nbsp;Old Stuff</a>
+    </div>
+  </div>
+
+  <div class="row list-group-item-header dropdown">
+    <a href="#" class="list-group-item header" data-toggle="dropdown"><i class="fa fa-clipboard"></i>&nbsp;All Posts <b class="caret"></b></a>
+    <ul class="dropdown-menu">
+      {% for post in site.posts %}
+      <li>
+        <a href="{{ post.url }}" class="list-group-item">{{ post.title }}</a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+</nav>

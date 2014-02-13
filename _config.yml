@@ -1,0 +1,17 @@
+name:        randy.secrist.io >
+
+root:        /
+source:      source
+destination: public
+
+future:      true
+safe:        false
+lsi:         false
+pygments:    true
+markdown:    redcarpet
+
+permalink:   /:year/:month/:day/:title/
+paginate:    5
+recent_posts: 10
+
+exclude: [Gemfile, Gemfile.lock, README.md, Rakefile, config.ru]

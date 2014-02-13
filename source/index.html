@@ -1,0 +1,66 @@
+---
+layout: default
+title: randy.secrist.io
+---
+
+{% for post in paginator.posts %}
+
+	<article class="post">
+        <div class="panel-heading">
+    		<h3 id="{{ post.title }}">
+    			{% if post.external-url %}
+    			<a href="{{ post.external-url }}">{{post.title}}&nbsp;</a>
+    			{% else %}
+    			<a href="{{ post.url }}">{{post.title}}&nbsp;</a>
+    			{% endif %}
+    			<a href="#{{ post.title }}"><i class="fa fa-link"></i></a>
+    		</h3>
+        </div>
+
+		<section class="panel panel-{{ post.type }}">
+            <div class="panel-heading">
+              <!--
+              <a href="#" class="btn btn-xs btn-{{ post.type }}">Like</a>
+              <a href="#" class="btn btn-xs btn-{{ post.type }}">Comment</a>
+          	  -->
+          	  <p>
+                <span class="pull-right"><i class="fa fa-clock-o"></i>&nbsp;{{ post.date | date: "%B %d, %Y" }}</span>
+              </p>
+            </div>
+
+            <!-- can use post.excerpt -->
+            <div class="panel-body">
+			  {{ post.content }}
+			</div>
+        </section>
+
+	</article>
+
+{% endfor %}
+
+
+
+{% if paginator.total_pages > 1 %}
+	<div class="postnavigation">
+
+		{% if paginator.previous_page %}
+			{% if paginator.page == 2 %}
+				<a class="prev left" href="/">&larr; Newer</a>
+			{% else %}
+				<a class="prev left" href="/page{{paginator.previous_page}}/">&larr; Newer</a>
+			{% endif %}
+		{% else %}
+			<span class="nope left">&larr; Newer</span>
+		{% endif %}
+
+		<span class="pages">Page {{ paginator.page }} of {{ paginator.total_pages }}</span>
+
+		{% if paginator.next_page %}
+			<a class="next right" href="/page{{paginator.next_page}}/">Older &rarr;</a>
+		{% else %}
+			<span class="nope right">Older &rarr;</span>
+		{% endif %}
+
+	</div>
+
+{% endif %}

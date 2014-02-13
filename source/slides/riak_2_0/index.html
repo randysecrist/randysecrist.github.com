@@ -1,0 +1,386 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Introduction to Riak Search</title>
+
+		<meta name="description" content="A Distributed Company">
+		<meta name="author" content="Randy Secrist">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="/assets/reveal-2.6.1/css/reveal.min.css">
+		<link rel="stylesheet" href="/assets/reveal-2.6.1/css/theme/moon.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="/assets/reveal-2.6.1/lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="/assets/reveal-2.6.1/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="/assets/reveal-2.6.1/lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>Riak 2.0</h1>
+					<h3>Introduction</h3>
+					<p>
+						<small>
+							by <a href="http://randy.secrist.io">Randy Secrist</a> / <a href="http://twitter.com/randysecrist">@randysecrist</a><br/>
+							2014
+						</small>
+					</p>
+					<aside class="notes">
+						KV is awesome, but make development easier
+					</aside>
+				</section>
+
+				<section>
+					<h2>New Features</h2>
+					<ul>
+						<li class="fragment">Better Search</li>
+						<li class="fragment">Data Types</li>
+						<div class="fragment">
+							<li>Strong Consistency</li>
+							<li>Security</li>
+							<li>Better Config Management</li>
+					    </div>
+					</ul>
+					<aside class="notes">
+						KV, roll your own index, link walking, map reduce, search 1.0, 2i
+						to
+						TODAY; Search 2.0
+					</aside>
+				</section>
+
+				<section>
+					<!-- TODO:  Add 2.0 Arch Slide -->
+					<section>
+						<h2>Search</h2>
+						<ul>
+							<li class="fragment">Document Indexing</li>
+							<li class="fragment">Schemas</li>
+							<li class="fragment">Simple Index Search</li>
+							<div class="fragment">
+								<li>Full Text Search</li>
+								<li>Facet Queries</li>
+								<li>Highlighting</li>
+							</div>
+						</ul>
+						<aside class="notes">
+							Anyone who does pure KV, 'wrestles' with Search.
+							  - (Hybrids are common).
+							  - (Use the right tools for the job, don't have impedance mismatch).
+							Insert Architecture Diagram
+							Documents do not need to be flat to index.
+							Documents can be any type, but less dev time using
+							XML / JSON.
+						</aside>
+					</section>
+
+					<section>
+						<h2>Yokozuna - High</h2>
+						<ul>
+							<li class="fragment">Write it like Riak</li>
+							<li class="fragment">Query it like Solr</li>
+						</ul>
+						<p>&nbsp;</p>
+						<p>
+							<small>
+								<a href="http://zinascii.com/2013/solr-distributed-search-and-the-stale-check.html#6">Z References</a><br/>
+								<a href="http://zinascii.com/yokozuna-cls/slides/yokozuna-demo.html#/">Commit Log Search</a>
+							</small>
+						</p>
+					</section>
+
+					<section>
+						<h2>Yokozuna - Lower</h2>
+						<ul>
+							<li class="fragment">Distributed Solr</li>
+							<li class="fragment">Active Anti Entropy</li>
+							<li class="fragment">HTTP or Protocol Buffers</li>
+						</ul>
+						<aside class="notes">
+							Can query solr nodes directly, but may not have complete harvest (partition coverage).
+							Use the riak search 2.0 (yokozuna provided) endpoint instead.
+							Basho / Riak client libaries have low level support for Search 2.0.
+						</aside>
+					</section>
+
+					<section>
+						<h2>Yokozuna - Low</h2>
+						<ul>
+							<li class="fragment"><a href="https://github.com/basho/riak-ruby-client">Ruby</a></li>
+							<li class="fragment"><a href="https://github.com/basho/riak-python-client">Python</a></li>
+							<li class="fragment"><a href="https://github.com/basho/riak-java-client">Java / Scala</a></li>
+						</ul>
+						<aside class="notes">
+							Can query solr nodes directly, but may not have complete harvest (partition coverage).
+							Use the riak search 2.0 (yokozuna provided) endpoint instead.
+							Basho / Riak client libaries have low level support for Search 2.0.
+							For lazy developers like me, quite a bit of low level setup to use.
+						</aside>
+					</section>
+				</section>
+
+				<section>
+					<!-- TODO:  Show RJ on Arch Slide -->
+					<section>
+						<h2>Riak JSON</h2>
+						<ul>
+							<li class="fragment">
+								<a href="https://github.com/basho-labs/riak_json">Open Source @ Basho Labs</a>
+							</li>
+							<li class="fragment">Layered Above Riak Search 2.0</li>
+							<li class="fragment">HTTP API</li>
+						</ul>
+
+						<div class="fragment">
+							<pre><code data-trim contenteditable>
+git clone https://github.com/basho-labs/riak_json
+							</code></pre>
+						</div>
+
+						<aside class="notes">
+							Ease YZ setup - (lets make it easy for devs)
+							More collection / document oriented using JSON.
+							Open Source, in Basho Labs
+							Higher level, developer friendly API on top of Search 2.0
+							Java, Ruby, Python client libraries.
+						</aside>
+					</section>
+
+					<section>
+						<h2>Riak JSON Client Libraries</h2>
+						<div class="fragment">
+							<small>
+							  <a href="https://github.com/dmitrizagidulin/nrj">Node.js</a>
+						    </small>
+							<pre><code data-trim contenteditable>
+git clone https://github.com/dmitrizagidulin/nrj
+							</code></pre>
+						</div>
+						<div class="fragment">
+							<small>
+							  <a href="https://github.com/basho-labs/riak_json_python_client">Python</a>
+						    </small>
+							<pre><code data-trim contenteditable>
+git clone https://github.com/basho-labs/riak_json_python_client
+							</code></pre>
+						</div>
+						<div class="fragment">
+							<small>
+							  <a href="https://github.com/basho-labs/riak_json_ruby_client">Ruby</a>
+						    </small>
+							<pre><code data-trim contenteditable>
+git clone https://github.com/basho-labs/riak_json_ruby_client
+							</code></pre>
+						</div>
+						<div class="fragment">
+							<small>
+							  <a href="https://github.com/dmitrizagidulin/rj-activemodel">Ruby Active Model</a>
+						    </small>
+							<pre><code data-trim contenteditable>
+git clone https://github.com/dmitrizagidulin/rj-activemodel
+							</code></pre>
+						</div>
+						<div class="fragment">
+							<small>
+							  <a href="https://github.com/basho-labs/riak_json_ruby_client">Java</a>
+						    </small>
+							<pre><code data-trim contenteditable>
+git clone https://github.com/basho-labs/riak_json_java_client
+							</code></pre>
+						</div>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Getting Riak JSON</h2>
+					</section>
+
+					<section>
+						<h2>Build from Source</h2>
+						<div class="fragment">
+							<pre><code data-trim contenteditable>
+git clone https://github.com/basho/riak.git
+git checkout ack-riak-json
+make rel
+make devrel
+							</code></pre>
+						</div>
+
+						<aside class="notes">
+							I will build you a custom package.
+							If you use windows, use vagrant vm + c# client
+						</aside>
+					</section>
+
+					<!-- TODO -->
+					<section>
+						<h2>Vagrant VM w/ Virtual Box</h2>
+					</section>
+
+					<section>
+						<h2>Riak Configuration</h2>
+						<p>
+							etc/riak.conf
+						</p>
+						<pre><code data-trim contenteditable>
+search = on
+riak_json_http = on
+						</code></pre>
+					</section>
+
+					<section>
+						<h2>Start Riak</h2>
+						<pre><code data-trim contenteditable>
+ulimit -n 4096
+bin/riak start
+bin/riak ping
+						</code></pre>
+					</section>
+				</section>
+
+				<!-- TODO:  push jar file to github repo -->
+				<section>
+					<section>
+						<h2>Java / Scala</h2>
+						<pre class="fragment"><code data-trim contenteditable>
+<dependency>
+  <groupId>riak_json_java_client</groupId>
+  <artifactId>riak_json_java_client</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+</dependency>
+  						</code></pre>
+						<pre class="fragment"><code data-trim contenteditable>
+<repositories>
+  <repository>
+    <id>Basho Labs's - Snapshots</id>
+    <url>https://github.com/randysecrist/randysecrist-mvn-repo/raw/master/snapshots</url>
+  </repository>
+</repositories>
+  						</code></pre>
+					</section>
+
+					<section>
+						<h2>Import</h2>
+						<div class="fragment"><small>Java</small>
+							<pre><code data-trim contenteditable>
+import com.basho.riak.json.*;
+							</code></pre>
+						</div>
+						<div class="fragment"><small>Scala</small>
+							<pre><code data-trim contenteditable>
+import com.basho.riak.json._
+							</code></pre>
+						</div>
+					</section>
+
+					<section>
+						<h2>Instantiate</h2>
+						<div class="fragment"><small>Java</small>
+							<pre><code data-trim contenteditable>
+Client client = new Client("localhost", 10018);
+client.createCollection("test_collection");
+							</code></pre>
+						</div>
+						<div class="fragment"><small>Scala</small>
+							<pre><code data-trim contenteditable>
+val client = new Client("localhost", 10018)
+client.createCollection("test_collection")
+							</code></pre>
+						</div>
+					</section>
+
+					<section>
+						<h2>Define Schema</h2>
+					</section>
+
+					<section>
+						<h2>Associate Schema</h2>
+					</section>
+
+					<section>
+						<h2>Getting Data In</h2>
+					</section>
+
+					<section>
+						<h2>Getting Data Out</h2>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Riak Data Types</h2>
+						<p>
+							Lorem Ipsum
+						</p>
+
+						<aside class="notes">
+							Lorem Ipsum
+						</aside>
+					</section>
+				</section>
+
+				<section>
+					<h1>THE END</h1>
+					<small><a href="http://basho.com">basho.com</a></small><br/>
+					<small><a href="http://randy.secrist.io">randy.secrist.io<a></small>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="/assets/reveal-2.6.1/lib/js/head.min.js"></script>
+		<script src="/assets/reveal-2.6.1/js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: '/assets/reveal-2.6.1/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: '/assets/reveal-2.6.1/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '/assets/reveal-2.6.1/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '/assets/reveal-2.6.1/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '/assets/reveal-2.6.1/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: '/assets/reveal-2.6.1/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
