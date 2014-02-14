@@ -135,7 +135,7 @@ val schema = new Schema.Builder()
   .addField(new Field("owner", STRING))
   .build()
 
-collection.setSchema(schema);
+collection.setSchema(schema)
 ```
 
 Add some data, riak will generate the keys for you if you wish, or you

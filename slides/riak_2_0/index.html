@@ -294,6 +294,10 @@ import com.basho.riak.json.*;
 						<div class="fragment"><small>Scala</small>
 							<pre><code data-trim contenteditable class="scala">
 import com.basho.riak.json._
+import com.basho.riak.json.Field.Type._
+
+import scala.beans.BeanProperty
+import com.fasterxml.jackson.annotation.JsonIgnore;
 							</code></pre>
 						</div>
 					</section>
@@ -315,19 +319,94 @@ client.createCollection("test_collection")
 					</section>
 
 					<section>
+						<h2>Define Class</h2>
+						<div class="fragment"><small>Scala</small>
+							<pre><code data-trim contenteditable class="scala">
+class MySquare (l:Int, w:Int) extends Document {
+  def this() =  this(0, 0)
+  @BeanProperty var key: String = _
+  @BeanProperty var length: Int = l
+  @BeanProperty var width: Int = w
+
+  /* don't serialize this tuple */
+  @JsonIgnore def getSize = Tuple2(length, width)
+}
+  							</code></pre>
+						</div>
+					</section>
+
+					<section>
 						<h2>Define Schema</h2>
+						<div class="fragment"><small>Scala</small>
+							<pre><code data-trim contenteditable class="scala">
+val schema = new Schema.Builder()
+  .addField(new Field("length", INTEGER).setRequired(true))
+  .addField(new Field("width", INTEGER).setRequired(true))
+  .addField(new Field("owner", STRING))
+  .build()
+  							</code></pre>
+						</div>
 					</section>
 
 					<section>
 						<h2>Associate Schema</h2>
+						<div class="fragment"><small>Scala</small>
+							<pre><code data-trim contenteditable class="scala">
+collection.setSchema(schema)
+  							</code></pre>
+						</div>
 					</section>
 
 					<section>
 						<h2>Getting Data In</h2>
+						<div class="fragment"><small>Scala</small>
+							<pre><code data-trim contenteditable class="scala">
+val large_square = new MySquare(1024, 768)
+val normal_square = new MySquare(640, 480)
+collection.insert(large_square)
+collection.insert(normal_square)
+  							</code></pre>
+						</div>
 					</section>
 
 					<section>
 						<h2>Getting Data Out</h2>
+						<div class="fragment"><small>Scala</small>
+							<pre><code data-trim contenteditable class="scala">
+// By Key
+val result = collection.findByKey("9tT49FHJoQImObmPYgVPRcB56T2", classOf[MySquare])
+result.getLength() => 1024
+  							</code></pre>
+ 						</div>
+					</section>
+
+					<section>
+						<h2>Getting Data Out</h2>
+						<div class="fragment"><small>Scala</small>
+							<pre><code data-trim contenteditable class="scala">
+// Find One
+val q_string = "{\"length\": {\"$gt\": 300}}"
+val query = new Query(q_string, classOf[MySquare]);
+val single_result = collection.findOne(query)
+  							</code></pre>
+							<pre><code data-trim contenteditable class="scala">
+// All the Things!
+val many_results = collection.findAll(query)
+
+// documents are a java Collection
+many_results.getDocuments().size() => 2
+
+// info about the result set
+many_results.numPages(); => 1 -- total pages in result set
+many_results.getPage(); => 0 -- current page (zero-indexed)
+many_results.perPage(); => results per page, defaults to 100
+
+// extract into a more malable scala list if needed:
+many_results.getDocuments.toArray(
+  new Array[MySquare](many_results.getDocuments.size)
+)
+  							</code></pre>
+ 						</div>
 					</section>
 				</section>
 
@@ -339,7 +418,6 @@ git clone http://github.com/basho/riak_json_python_client
 cd riak_json_python_client
 python setup.py install
   						</code></pre>
-
 					</section>
 
 					<section>
