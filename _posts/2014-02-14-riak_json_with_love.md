@@ -13,7 +13,7 @@ currently called [Riak JSON](https://github.com/basho-labs/riak_json).
 
 #### Wait, What is Riak?
 
-<img src="/assets/images/riak_2_0/riaklogo.png" style="margin: auto; display: block;"/>
+<img src="/assets/images/riak_2_0/riaklogo.png" style="margin: auto; display: block;" alt="Riak 2.0"/>
 
 [Riak](http://docs.basho.com/riak/latest/)
 is a open source distributed database which is made by the
@@ -213,7 +213,7 @@ A key interest of mine is making Riak more developer friendly, and while
 there will continue to be gaps as we iterate, I feel that the 2.0 is a *step*
 in the right direction to achieve this.
 
-<img src="/assets/images/riak_2_0/basho-logo.png" style="margin: auto; display: block;"/>
+<img src="/assets/images/riak_2_0/basho-logo.png" style="margin: auto; display: block;" alt="Basho Technologies"/>
 
 
 
