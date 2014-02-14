@@ -30,7 +30,7 @@ Interests I have are:
   2.  Java / Scala
   3.  C / Objective C
   4.  Ruby
-  5.  Ardino
+  5.  Arduino
   6.  Raspberry PI
 
 If I add more functionality, I may write more about random thoughts around the
