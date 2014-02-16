@@ -108,6 +108,11 @@ a.list-group-item:hover, a.list-group-item:focus {
 #mobile-nav li {
   list-style: none;
 }
+#map {
+  height: 350px; 
+  border: 1px solid #ccc;
+}
+
 
 
 /* Basics */
