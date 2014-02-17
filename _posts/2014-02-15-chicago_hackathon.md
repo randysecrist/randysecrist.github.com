@@ -21,8 +21,8 @@ data from tabular format into JSON, and noticing geo spacial coordinates within,
 we decides to just make it into [GeoJSON](http://geojson.org).
 
 I then grabbed [angular js](http://angularjs.org/), [leaflet.js](http://leafletjs.com), 
-[marker cluster](https://github.com/Leaflet/Leaflet.markercluster), and registered
-up a [cloudmade](http://cloudmade.com/documentation/map-tiles) map tiles account.
+[marker cluster](https://github.com/Leaflet/Leaflet.markercluster), and
+[open street map](http://www.openstreetmap.org/).
 
 A few ten's of minutes later, I had mashed these together with the data the city
 gave us, and ended up with the simple map control below.  Afterward, we had a few
@@ -64,20 +64,15 @@ function FetchCtrl($scope, $http, $templateCache) {
           return;
         }
 
-        // http://cloudmade.com/documentation/map-tiles
-        // http://cloudmade.com/documentation/auth
-        // curl -X POST 'http://auth.cloudmade.com/token/d42764c2031943b8967bd982c2d6122d?userid=randy.secrist@gmail.com&deviceid=web'
-        var cloudmade = L.tileLayer('http://{s}.tile.cloudmade.com/{key}/999@2x/256/{z}/{x}/{y}.png?token={token}', {
+        var map_style = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
           maxZoom: 18,
           minZoom: 8,
-          attribution: 'Map data &copy; 2014 OpenStreetMap contributors, Imagery &copy; 2014 CloudMade',
-          key: 'd42764c2031943b8967bd982c2d6122d',
-          token: 'd1ab8aa7b4974c7f965449030f7e4c63'
+          attribution: 'Map data &copy; 2014 OpenStreetMap contributors'
         });
 
         try {
           map = L.map('map')
-            .addLayer(cloudmade);
+            .addLayer(map_style);
         }
         catch (Exception) {
           if (map != null) {
