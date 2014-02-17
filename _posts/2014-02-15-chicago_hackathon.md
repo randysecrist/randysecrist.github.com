@@ -69,6 +69,7 @@ function FetchCtrl($scope, $http, $templateCache) {
         // curl -X POST 'http://auth.cloudmade.com/token/d42764c2031943b8967bd982c2d6122d?userid=randy.secrist@gmail.com&deviceid=web'
         var cloudmade = L.tileLayer('http://{s}.tile.cloudmade.com/{key}/999@2x/256/{z}/{x}/{y}.png?token={token}', {
           maxZoom: 18,
+          minZoom: 8,
           attribution: 'Map data &copy; 2014 OpenStreetMap contributors, Imagery &copy; 2014 CloudMade',
           key: 'd42764c2031943b8967bd982c2d6122d',
           token: 'd1ab8aa7b4974c7f965449030f7e4c63'
