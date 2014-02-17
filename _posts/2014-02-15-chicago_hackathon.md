@@ -7,21 +7,36 @@ type:   primary
 
 #### Fun With Data & Maps
 
-This actually happened months ago, but I finally got around to making it work like
-a real API would with the proper [CORS](http://www.w3.org/TR/cors) and
-[CSRF](http://en.wikipedia.org/wiki/Cross-site_request_forgery) settings.
+This actually happened in July of 2013, and I finally got around to learning more
+of the parts, storing the actual map data in Riak somewhere, and hosting the map
+bits on real servers so I could see how to properly deal with
+[CORS](http://www.w3.org/TR/cors) and 
+[CSRF](http://en.wikipedia.org/wiki/Cross-site_request_forgery) related issues.
 
-The hackathon was focused on using [city data](https://data.cityofchicago.org/), so
-myself and another guy grabbed a bunch of data and started seeing what we could do
-with it.  I had been reading about [GeoJSON](http://geojson.org), 
-[leaflet.js](http://leafletjs.com), 
-[marker cluster](https://github.com/Leaflet/Leaflet.markercluster), and 
-[cloudmade](http://cloudmade.com/documentation/map-tiles) prior to this.  We
-decided to mash these together with the data the city gave us, and ended up with
-the simple map app below.
+The hackathon was focused on using [Chigaco city data](https://data.cityofchicago.org/).
+During some downtime (my job was to help the attendees with technical questions),
+myself and another coach grabbed a bunch of the data people were working with and
+started seeing what we could do with it.  After watching my partner convert the
+data from tabular format into JSON, and noticing geo spacial coordinates within,
+we decides to just make it into [GeoJSON](http://geojson.org).
 
-This particular data set shows all the `green spaces` in the city.  With a bit more
-effort, I'm sure I could make it more functional and nice.
+I then grabbed [angular js](http://angularjs.org/), [leaflet.js](http://leafletjs.com), 
+[marker cluster](https://github.com/Leaflet/Leaflet.markercluster), and registered
+up a [cloudmade](http://cloudmade.com/documentation/map-tiles) map tiles account.
+
+A few ten's of minutes later, I had mashed these together with the data the city
+gave us, and ended up with the simple map control below.  Afterward, we had a few
+conversations with people on the *Internet of Things*, that left me feeling like I
+should know the client side application stuff better.
+
+I particularly like the marker cluster combination effect at max zoom levels.  This
+particular data set shows all the green spaces in the city.  With a bit more
+effort it may be possible to reduce the amount of data pulled across if I can map it
+to access patterns that make sense for the changing zoom levels.
+
+Will have to think & learn more on this.
+
+<!-- ######################################################### -->
 
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.7/angular.min.js"></script>
 
@@ -36,9 +51,6 @@ effort, I'm sure I could make it more functional and nice.
 var map = null;
 
 function FetchCtrl($scope, $http, $templateCache) {
-  $scope.method = 'GET';
-  $scope.url = 'https://api-mhealth.dev.attcompute.com/v3/ownership/GgVEp0xY37emkWi8Pq8Ot4bQO8H/document/chicago_green_roofs';
-
   $scope.fetch = function() {
     $scope.code = null;
     $scope.response = null;
@@ -67,7 +79,9 @@ function FetchCtrl($scope, $http, $templateCache) {
             .addLayer(cloudmade);
         }
         catch (Exception) {
-          map.remove();
+          if (map != null) {
+            map.remove();
+          }
         }
 
         var markers = L.markerClusterGroup();
@@ -118,8 +132,10 @@ function FetchCtrl($scope, $http, $templateCache) {
 
         markers.addLayer(geoJsonLayer);
 
-        map.addLayer(markers);
-        map.fitBounds(markers.getBounds());
+        if (map != null) {
+          map.addLayer(markers);
+          map.fitBounds(markers.getBounds());
+        }
       }).
       error(function(data, status) {
         $scope.data = data || "Request failed";
@@ -131,30 +147,29 @@ function FetchCtrl($scope, $http, $templateCache) {
     $scope.method = method;
     $scope.url = url;
   };
+
+  // Init scope, used when page loads
+  $scope.init = function () {
+    $scope.method = 'GET';
+    $scope.url = 'https://api-mhealth.dev.attcompute.com/v3/ownership/GgVEp0xY37emkWi8Pq8Ot4bQO8H/document/chicago_green_roofs';
+    $scope.fetch();
+  };
 }
 </script>
 
 <div ng-app="">
-  <div ng-controller="FetchCtrl">
-    <button ng-click="fetch()">Load Map</button><br>
-
-    <!--
+  <div ng-controller="FetchCtrl" data-ng-init="init()">
+    <!-- Angular JS Things
     <select ng-model="method">
       <option>GET</option>
       <option>JSONP</option>
     </select>
+    <button ng-click="fetch()">Load Map</button><br>
     <input type="text" ng-model="url" size="80"/>
     <button ng-click="updateModel('GET', 'https://api-mhealth.dev.attcompute.com/v3/ownership/GgVEp0xY37emkWi8Pq8Ot4bQO8H/document/chicago_green_roofs')">Chicago Green Roof</button>
-    <button ng-click="updateModel('GET', '/assets/green_roof.json')">Chicago Green Roof Local</button>
     -->
   </div>
   
 </div>
 
 <div id="map" style="margin: auto; display: block;"/>
-
-<script type="text/javascript">
-(function() {
-  console.log("On Load:");
-}).call(this);
-</script>
