@@ -37,7 +37,7 @@ var map = null;
 
 function FetchCtrl($scope, $http, $templateCache) {
   $scope.method = 'GET';
-  $scope.url = 'http-geojson.html';
+  $scope.url = 'https://api-mhealth.dev.attcompute.com/v3/ownership/GgVEp0xY37emkWi8Pq8Ot4bQO8H/document/chicago_green_roofs';
 
   $scope.fetch = function() {
     $scope.code = null;
@@ -136,56 +136,19 @@ function FetchCtrl($scope, $http, $templateCache) {
 
 <div ng-app="">
   <div ng-controller="FetchCtrl">
+    <button ng-click="fetch()">Load Map</button><br>
+
+    <!--
     <select ng-model="method">
       <option>GET</option>
       <option>JSONP</option>
     </select>
     <input type="text" ng-model="url" size="80"/>
-    <button ng-click="fetch()">fetch</button><br>
-    
     <button ng-click="updateModel('GET', 'https://api-mhealth.dev.attcompute.com/v3/ownership/GgVEp0xY37emkWi8Pq8Ot4bQO8H/document/chicago_green_roofs')">Chicago Green Roof</button>
-
-    <!--
     <button ng-click="updateModel('GET', '/assets/green_roof.json')">Chicago Green Roof Local</button>
     -->
   </div>
   
-  <!-- http-hello.html -->
-  <script type="text/ng-template" id="http-geojson.html">
-    { "type": "FeatureCollection",
-      "features": [
-        { "type": "Feature",
-          "geometry": {"type": "Point", "coordinates": [102.0, 0.5]},
-          "properties": {"prop0": "value0"}
-          },
-        { "type": "Feature",
-          "geometry": {
-            "type": "LineString",
-            "coordinates": [
-              [102.0, 0.0], [103.0, 1.0], [104.0, 0.0], [105.0, 1.0]
-              ]
-            },
-          "properties": {
-            "prop0": "value0",
-            "prop1": 0.0
-            }
-          },
-        { "type": "Feature",
-           "geometry": {
-             "type": "Polygon",
-             "coordinates": [
-               [ [100.0, 0.0], [101.0, 0.0], [101.0, 1.0],
-                 [100.0, 1.0], [100.0, 0.0] ]
-               ]
-           },
-           "properties": {
-             "prop0": "value0",
-             "prop1": {"this": "that"}
-             }
-           }
-      ]
-    }
-  </script>
 </div>
 
 <div id="map" style="margin: auto; display: block;"/>
