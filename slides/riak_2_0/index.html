@@ -508,6 +508,9 @@ customers.insert(customer2, customer2_key)
 						</div>
 						<aside class="notes">
 							customer = {'name': 'Json Argo', 'Address': '123 Fake Street', 'City': 'Ancient', 'State': 'Greece', 'Age': 23}
+							customer_key = customers.insert(customer)
+							customer2 = {'name': 'Dan Gerr', 'Address': '1000 Hoover Drive', 'City': 'Ferrytown','State': 'WV', 'Age': 33}
+							customer2_key = 'cust_key_12345'
 						</aside>
 					</section>
 
@@ -546,16 +549,23 @@ for item in result.objects():
 				</section>
 
 				<section>
-					<section>
-						<h2>Riak Data Types</h2>
-						<p>
-							Lorem Ipsum
-						</p>
-
-						<aside class="notes">
-							Lorem Ipsum
-						</aside>
-					</section>
+					<h2>Riak JSON Operators</h2>
+					<ul class="fragment">
+						<li>AND</li>
+						<li>OR</li>
+						<li>Not Equal ($ne)</li>
+						<li>Greater Than ($gt)</li>
+						<li>Greater Than Equal($gte)</li>
+						<li>Less Than ($lt)</li>
+						<li>Less Than Equal($lte)</li>
+						<li>Between</li>
+						<li>Regex</li>
+						<li>Exists</li>
+					</ul>
+					<aside class="notes">
+						% Mongo expects slashes and .*'s to be added
+						https://github.com/basho-labs/riak_json/blob/6ed8f218031feb54c76de0b19812c93b529285bc/src/rj_query.erl
+					</aside>
 				</section>
 
 				<section>
