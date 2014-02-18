@@ -28,7 +28,7 @@
 		<!--[if lt IE 9]>
 		<script src="/assets/reveal-2.6.1/lib/js/html5shiv.js"></script>
 		<![endif]-->
-		
+
 		<script type="text/javascript">
 		  var _gaq = _gaq || [];
 		  _gaq.push(['_setAccount', 'UA-23047862-1']);
@@ -138,7 +138,7 @@
 						<ul>
 							<li class="fragment"><a href="https://github.com/basho/riak-ruby-client">Ruby</a></li>
 							<li class="fragment"><a href="https://github.com/basho/riak-python-client">Python</a></li>
-							<li class="fragment"><a href="https://github.com/basho/riak-java-client">Java / Scala</a></li>
+							<li class="fragment"><a href="https://github.com/basho/riak-java-client">Java</a></li>
 						</ul>
 						<aside class="notes">
 							Can query solr nodes directly, but may not have complete harvest (partition coverage).
@@ -435,7 +435,8 @@ python setup.py install
 						<h2>Import</h2>
 						<div class="fragment">
 							<pre><code data-trim contenteditable class="python">
-from riakjson.client import Client
+from riakjson.client import Client, Connection
+from riakjson.schema import Schema
 							</code></pre>
 						</div>
 					</section>
@@ -444,7 +445,7 @@ from riakjson.client import Client
 						<h2>Instantiate</h2>
 						<div class="fragment">
 							<pre><code data-trim contenteditable class="python">
-client = Client(Connection(host='127.0.0.1', port=8098))
+client = Client(Connection(host='127.0.0.1', port=10018))
 
 # Create or use an existing collection named 'customers'
 customers = client.customers
@@ -464,6 +465,9 @@ customer_schema = Schema()
 	.geo('Location').build()
 							</code></pre>
 						</div>
+						<aside class="notes">
+							customer_schema = Schema().text('name').text('Address').text('City').number('Age').geo('Location').build()
+						</aside>
 					</section>
 
 					<section>
@@ -501,7 +505,10 @@ customer2_key = 'cust_key_12345'
 customers.insert(customer2, customer2_key)
 # 'cust_key_12345'
 							</code></pre>
-						</div>	
+						</div>
+						<aside class="notes">
+							customer = {'name': 'Json Argo', 'Address': '123 Fake Street', 'City': 'Ancient', 'State': 'Greece', 'Age': 23}
+						</aside>
 					</section>
 
 					<section>
