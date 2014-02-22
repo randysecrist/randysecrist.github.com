@@ -4,26 +4,26 @@ layout: default
 ---
 
 <article class="post">
+  <div class="panel-heading">
+    <h3 id="{{ page.title }}">
+      {% if page.external-url %}
+      <a href="{{ page.external-url }}">{{page.title}}&nbsp;</a>
+      {% else %}
+      <a href="{{ page.url }}">{{page.title}}&nbsp;</a>
+      {% endif %}
+      <a href="#{{ page.title }}"><i class="fa fa-link"></i></a>
+    </h3>
+  </div>
+
+  <section class="panel panel-{{ page.type }}">
     <div class="panel-heading">
-		<h3 id="{{ page.title }}">
-			{% if page.external-url %}
-			<a href="{{ page.external-url }}">{{page.title}}&nbsp;</a>
-			{% else %}
-			<a href="{{ page.url }}">{{page.title}}&nbsp;</a>
-			{% endif %}
-			<a href="#{{ page.title }}"><i class="fa fa-link"></i></a>
-		</h3>
+      <a href="#"><i class="btn btn-xs btn-{{ page.type }} fa fa-link"></i></a>
+      <span class="pull-right">{{ page.date | date: "%b %d, %Y" }}</span>
     </div>
 
-	<section class="panel panel-{{ page.type }}">
-        <div class="panel-heading">
-          <a href="#"><i class="btn btn-xs btn-{{ page.type }} fa fa-link"></i></a>
-          <span class="pull-right">{{ page.date | date: "%b %d, %Y" }}</span>
-        </div>
-
-        <div class="panel-body">
-		  {{ content }}
-		</div>
-    </section>
+    <div class="panel-body">
+      {{ content }}
+    </div>
+  </section>
 
 </article>
