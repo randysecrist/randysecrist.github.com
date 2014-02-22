@@ -11,15 +11,15 @@ layout: default
       {% else %}
       <a href="{{ page.url }}">{{page.title}}&nbsp;</a>
       {% endif %}
-      <!--
       <a href="#{{ page.title }}"><i class="fa fa-link"></i></a>
-      -->
     </h3>
   </div>
 
   <section class="panel panel-{{ page.type }}">
     <div class="panel-heading">
+      <!--
       <a href="#"><i class="btn btn-xs btn-{{ page.type }} fa fa-link"></i></a>
+      -->
       <span class="pull-right">{{ page.date | date: "%b %d, %Y" }}</span>
     </div>
 
