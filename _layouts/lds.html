@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+<title>Copper Hills 7th Ward</title>
+
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootswatch/3.0.1/cyborg/bootstrap.min.css" />
+<link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.2/css/font-awesome.min.css" />
+<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,700|Inconsolata|Raleway:200" />
+
+<link rel="stylesheet" href="/assets/css/secrist_blog.css" />
+<link href="/assets/css/secrist_highlight.css" rel="stylesheet" />
+
+<script type="text/javascript">
+ var _gaq = _gaq || [];
+ _gaq.push(['_setAccount', 'UA-23047862-1']);
+ _gaq.push(['_trackPageview']);
+
+ (function() {
+   var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+   ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+   var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+ })();
+</script>
+
+</head>
+
+<body>
+  <a href="#top" class="text-muted back-to-top"><i class="fa fa-toggle-up"></i>&nbsp;Back to top</a>
+
+  <div class="container">
+
+    <header>
+      <div class="row">
+        <div class="page-header col-md-12">
+          <h1 id="top" style="text-align: center;">Copper Hills 7th Ward</h1>
+        </div>
+      </div>
+    </header>
+
+    <div class="row">
+
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <div>
+          <div class="panel panel-default">
+
+            <article class="post">
+              <div class="panel-heading">
+                <h3 id="{{ page.title }}">
+                  <a href="{{ page.url }}">{{page.title}}&nbsp;</a>
+                  <a href="#{{ page.title }}"><i class="fa fa-link"></i></a>
+                </h3>
+              </div>
+
+              {{ content }}
+
+            </article>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+<script src="//code.jquery.com/jquery-1.10.1.min.js"></script>
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script>
+<script src="/assets/js/jquery.mobilemenu.min.js"></script>
+
+</html>
