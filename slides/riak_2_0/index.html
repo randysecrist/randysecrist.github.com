@@ -15,7 +15,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
 		<link rel="stylesheet" href="/assets/reveal-2.6.1/css/reveal.min.css">
-		<link rel="stylesheet" href="/assets/reveal-2.6.1/css/theme/moon.css" id="theme">
+		<link rel="stylesheet" href="/assets/reveal-2.6.1/css/theme/solarized.css" id="theme">
 
 		<!-- For syntax highlighting -->
 		<link rel="stylesheet" href="/assets/reveal-2.6.1/lib/css/zenburn.css">
@@ -64,8 +64,8 @@
 				<section>
 					<h2>New Features</h2>
 					<ul>
-						<li class="fragment">Better Search</li>
-						<li class="fragment">Data Types</li>
+						<li>Better Search</li>
+						<li>Data Types</li>
 						<div class="fragment">
 							<li>Strong Consistency</li>
 							<li>Security</li>
@@ -84,9 +84,9 @@
 					<section>
 						<h2>Search</h2>
 						<ul>
-							<li class="fragment">Document Indexing</li>
-							<li class="fragment">Schemas</li>
-							<li class="fragment">Simple Index Search</li>
+							<li>Document Indexing</li>
+							<li>Schemas</li>
+							<li>Simple Index Search</li>
 							<div class="fragment">
 								<li>Full Text Search</li>
 								<li>Facet Queries</li>
@@ -107,8 +107,8 @@
 					<section>
 						<h2>Yokozuna - High</h2>
 						<ul>
-							<li class="fragment">Write it like Riak</li>
-							<li class="fragment">Query it like Solr</li>
+							<li>Write it like Riak</li>
+							<li>Query it like Solr</li>
 						</ul>
 						<p>&nbsp;</p>
 						<p>
@@ -122,9 +122,9 @@
 					<section>
 						<h2>Yokozuna - Lower</h2>
 						<ul>
-							<li class="fragment">Distributed Solr</li>
-							<li class="fragment">Active Anti Entropy</li>
-							<li class="fragment">HTTP or Protocol Buffers</li>
+							<li>Distributed Solr</li>
+							<li>Active Anti Entropy</li>
+							<li>HTTP or Protocol Buffers</li>
 						</ul>
 						<aside class="notes">
 							Can query solr nodes directly, but may not have complete harvest (partition coverage).
@@ -136,9 +136,9 @@
 					<section>
 						<h2>Yokozuna - Low</h2>
 						<ul>
-							<li class="fragment"><a href="https://github.com/basho/riak-ruby-client">Ruby</a></li>
-							<li class="fragment"><a href="https://github.com/basho/riak-python-client">Python</a></li>
-							<li class="fragment"><a href="https://github.com/basho/riak-java-client">Java</a></li>
+							<li><a href="https://github.com/basho/riak-ruby-client">Ruby</a></li>
+							<li><a href="https://github.com/basho/riak-python-client">Python</a></li>
+							<li><a href="https://github.com/basho/riak-java-client">Java</a></li>
 						</ul>
 						<aside class="notes">
 							Can query solr nodes directly, but may not have complete harvest (partition coverage).
@@ -154,14 +154,14 @@
 					<section>
 						<h2>Riak JSON</h2>
 						<ul>
-							<li class="fragment">
+                                                  <li>
 								<a href="https://github.com/basho-labs/riak_json">Open Source @ Basho Labs</a>
 							</li>
-							<li class="fragment">Layered Above Riak Search 2.0</li>
-							<li class="fragment">HTTP API</li>
+							<li>Layered Above Riak Search 2.0</li>
+							<li>HTTP API</li>
 						</ul>
 
-						<div class="fragment">
+						<div>
 							<pre><code data-trim contenteditable>
 git clone https://github.com/basho-labs/riak_json
 							</code></pre>
@@ -178,7 +178,7 @@ git clone https://github.com/basho-labs/riak_json
 
 					<section>
 						<h2>Riak JSON Client Libraries</h2>
-						<div class="fragment">
+						<div>
 							<small>
 							  <a href="https://github.com/dmitrizagidulin/nrj">Node.js</a>
 						    </small>
@@ -186,7 +186,7 @@ git clone https://github.com/basho-labs/riak_json
 git clone https://github.com/dmitrizagidulin/nrj
 							</code></pre>
 						</div>
-						<div class="fragment">
+						<div>
 							<small>
 							  <a href="https://github.com/basho-labs/riak_json_python_client">Python</a>
 						    </small>
@@ -194,7 +194,7 @@ git clone https://github.com/dmitrizagidulin/nrj
 git clone https://github.com/basho-labs/riak_json_python_client
 							</code></pre>
 						</div>
-						<div class="fragment">
+						<div>
 							<small>
 							  <a href="https://github.com/basho-labs/riak_json_ruby_client">Ruby</a>
 						    </small>
@@ -202,7 +202,7 @@ git clone https://github.com/basho-labs/riak_json_python_client
 git clone https://github.com/basho-labs/riak_json_ruby_client
 							</code></pre>
 						</div>
-						<div class="fragment">
+						<div>
 							<small>
 							  <a href="https://github.com/dmitrizagidulin/riagent">Riagent (RiakJson for Rails)</a>
 						    </small>
@@ -210,7 +210,7 @@ git clone https://github.com/basho-labs/riak_json_ruby_client
 git clone https://github.com/dmitrizagidulin/riagent
 							</code></pre>
 						</div>
-						<div class="fragment">
+						<div>
 							<small>
 							  <a href="https://github.com/basho-labs/riak_json_java_client">Java</a>
 						    </small>
@@ -228,7 +228,7 @@ git clone https://github.com/basho-labs/riak_json_java_client
 
 					<section>
 						<h2>Build from Source</h2>
-						<div class="fragment">
+						<div>
 							<pre><code data-trim contenteditable>
 git clone https://github.com/basho/riak.git
 git checkout ack-riak-json
@@ -278,31 +278,17 @@ bin/riak ping
 				<section>
 					<section>
 						<h2>Java / Scala</h2>
-						<pre class="fragment"><code data-trim contenteditable class="xml">
-<dependency>
-  <groupId>riak_json_java_client</groupId>
-  <artifactId>riak_json_java_client</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-</dependency>
-  						</code></pre>
-						<pre class="fragment"><code data-trim contenteditable class="xml">
-<repositories>
-  <repository>
-    <id>Basho Labs's - Snapshots</id>
-    <url>https://github.com/randysecrist/randysecrist-mvn-repo/raw/master/snapshots</url>
-  </repository>
-</repositories>
-  						</code></pre>
+                                                <iframe width="100%" height="350" src="http://jsfiddle.net/randysecrist/czhZN/1/embedded/html%2Cjs/presentation/"></iframe>
 					</section>
 
 					<section>
 						<h2>Import</h2>
-						<div class="fragment"><small>Java</small>
+						<div><small>Java</small>
 							<pre><code data-trim contenteditable class="java">
 import com.basho.riak.json.*;
 							</code></pre>
 						</div>
-						<div class="fragment"><small>Scala</small>
+						<div><small>Scala</small>
 							<pre><code data-trim contenteditable class="scala">
 import com.basho.riak.json._
 import com.basho.riak.json.Field.Type._
@@ -315,13 +301,13 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 					<section>
 						<h2>Instantiate</h2>
-						<div class="fragment"><small>Java</small>
+						<div><small>Java</small>
 							<pre><code data-trim contenteditable class="java">
 Client client = new Client("localhost", 10018);
 client.createCollection("test_collection");
 							</code></pre>
 						</div>
-						<div class="fragment"><small>Scala</small>
+						<div><small>Scala</small>
 							<pre><code data-trim contenteditable class="scala">
 val client = new Client("localhost", 10018)
 client.createCollection("test_collection")
@@ -331,7 +317,7 @@ client.createCollection("test_collection")
 
 					<section>
 						<h2>Define Class</h2>
-						<div class="fragment"><small>Scala</small>
+						<div><small>Scala</small>
 							<pre><code data-trim contenteditable class="scala">
 class MySquare (l:Int, w:Int) extends Document {
   def this() =  this(0, 0)
@@ -348,7 +334,7 @@ class MySquare (l:Int, w:Int) extends Document {
 
 					<section>
 						<h2>Define Schema</h2>
-						<div class="fragment"><small>Scala</small>
+						<div><small>Scala</small>
 							<pre><code data-trim contenteditable class="scala">
 val schema = new Schema.Builder()
   .addField(new Field("length", INTEGER).setRequired(true))
@@ -361,7 +347,7 @@ val schema = new Schema.Builder()
 
 					<section>
 						<h2>Associate Schema</h2>
-						<div class="fragment"><small>Scala</small>
+						<div><small>Scala</small>
 							<pre><code data-trim contenteditable class="scala">
 collection.setSchema(schema)
   							</code></pre>
@@ -370,7 +356,7 @@ collection.setSchema(schema)
 
 					<section>
 						<h2>Getting Data In</h2>
-						<div class="fragment"><small>Scala</small>
+						<div><small>Scala</small>
 							<pre><code data-trim contenteditable class="scala">
 val large_square = new MySquare(1024, 768)
 val normal_square = new MySquare(640, 480)
@@ -382,7 +368,7 @@ collection.insert(normal_square)
 
 					<section>
 						<h2>Getting Data Out</h2>
-						<div class="fragment"><small>Scala</small>
+						<div><small>Scala</small>
 							<pre><code data-trim contenteditable class="scala">
 // By Key
 val result = collection.findByKey("9tT49FHJoQImObmPYgVPRcB56T2", classOf[MySquare])
@@ -393,7 +379,7 @@ result.getLength() => 1024
 
 					<section>
 						<h2>Getting Data Out</h2>
-						<div class="fragment"><small>Scala</small>
+						<div><small>Scala</small>
 							<pre><code data-trim contenteditable class="scala">
 // Find One
 val q_string = "{\"length\": {\"$gt\": 300}}"
@@ -424,7 +410,7 @@ many_results.getDocuments.toArray(
 				<section>
 					<section>
 						<h2>Python</h2>
-						<pre class="fragment"><code data-trim contenteditable>
+						<pre><code data-trim contenteditable>
 git clone http://github.com/basho/riak_json_python_client
 cd riak_json_python_client
 python setup.py install
@@ -433,7 +419,7 @@ python setup.py install
 
 					<section>
 						<h2>Import</h2>
-						<div class="fragment">
+						<div>
 							<pre><code data-trim contenteditable class="python">
 from riakjson.client import Client, Connection
 from riakjson.schema import Schema
@@ -443,7 +429,7 @@ from riakjson.schema import Schema
 
 					<section>
 						<h2>Instantiate</h2>
-						<div class="fragment">
+						<div>
 							<pre><code data-trim contenteditable class="python">
 client = Client(Connection(host='127.0.0.1', port=10018))
 
@@ -455,7 +441,7 @@ customers = client.customers
 
 					<section>
 						<h2>Define Schema</h2>
-						<div class="fragment">
+						<div>
 							<pre><code data-trim contenteditable class="python">
 customer_schema = Schema()
 	.text('name')
@@ -472,7 +458,7 @@ customer_schema = Schema()
 
 					<section>
 						<h2>Associate Schema</h2>
-						<div class="fragment">
+						<div>
 							<pre><code data-trim contenteditable class="python">
 customers.set_schema(customer_schema)
 							</code></pre>
@@ -481,7 +467,7 @@ customers.set_schema(customer_schema)
 
 					<section>
 						<h2>Getting Data In</h2>
-						<div class="fragment">
+						<div>
 							<pre><code data-trim contenteditable class="python">
 # No key - key generated by RiakJson
 customer = {'name': 'Json Argo',
@@ -516,7 +502,7 @@ customers.insert(customer2, customer2_key)
 
 					<section>
 						<h2>Getting Data Out</h2>
-						<div class="fragment" class="python">
+						<div class="python">
 							<pre><code data-trim contenteditable>
 # GET by key
 customer_record = customers.get(customer_key)
@@ -550,7 +536,7 @@ for item in result.objects():
 
 				<section>
 					<h2>Riak JSON Operators</h2>
-					<ul class="fragment">
+					<ul>
 						<li>AND</li>
 						<li>OR</li>
 						<li>Not Equal ($ne)</li>
