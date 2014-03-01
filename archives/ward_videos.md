@@ -45,6 +45,6 @@ function httpGet(theUrl) {
 }
 var video_one = JSON.parse(httpGet("http://secristfamily.com:4000/remote/headers/http%3A%2F%2Fdata.riakcs.net%3A8080%2Fshared_files%2F001.mp4"));
 var video_two = JSON.parse(httpGet("http://secristfamily.com:4000/remote/headers/http%3A%2F%2Fdata.riakcs.net%3A8080%2Fshared_files%2F002.mp4"));
-document.getElementById("video_1").innerHTML=video_one['meta'][1][1];
-document.getElementById("video_2").innerHTML=video_two['meta'][1][1];
+document.getElementById("video_1").innerHTML= new Date(video_one['last_modified'] * 1000).toLocaleDateString();
+document.getElementById("video_2").innerHTML= new Date(video_two['last_modified'] * 1000).toLocaleDateString();
 </script>
