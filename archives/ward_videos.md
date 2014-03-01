@@ -11,7 +11,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praes
 <section class="panel panel-{{ page.type }}">
   <div class="panel-heading">
     <p>
-      <span class="pull-right"><i class="fa fa-clock-o"></i>&nbsp;Video Date (TBD)</span>
+      <span class="pull-right"><i class="fa fa-clock-o"></i>&nbsp;<span id="video_1" class="pull-right">Video 1 Date (TBD)</span></span>
     </p>
   </div>
   <div class="panel-body">
@@ -26,10 +26,25 @@ Curabitur sodales ligula in libero. Sed dignissim lacinia nunc. Curabitur tortor
 <section class="panel panel-{{ page.type }}">
   <div class="panel-heading">
     <p>
-      <span class="pull-right"><i class="fa fa-clock-o"></i>&nbsp;Video Date (TBD)</span>
+      <span class="pull-right"><i class="fa fa-clock-o"></i>&nbsp;<span id="video_2" class="pull-right">Video 2 Date (TBD)</span></span>
     </p>
   </div>
   <div class="panel-body">
     <video height="270" id="001" src="http://data.riakcs.net:8080/shared_files/002.mp4" type="video/mp4" controls style="margin: auto; display: block;"></video>
   </div>
 </section>
+
+<script>
+function httpGet(theUrl) {
+    var xmlHttp = null;
+
+    xmlHttp = new XMLHttpRequest();
+    xmlHttp.open( "GET", theUrl, false );
+    xmlHttp.send( null );
+    return xmlHttp.responseText;
+}
+var video_one = JSON.parse(httpGet("http://secristfamily.com:4000/remote/headers/http%3A%2F%2Fdata.riakcs.net%3A8080%2Fshared_files%2F001.mp4"));
+var video_two = JSON.parse(httpGet("http://secristfamily.com:4000/remote/headers/http%3A%2F%2Fdata.riakcs.net%3A8080%2Fshared_files%2F002.mp4"));
+document.getElementById("video_1").innerHTML=video_one['meta'][1][1];
+document.getElementById("video_2").innerHTML=video_two['meta'][1][1];
+</script>
