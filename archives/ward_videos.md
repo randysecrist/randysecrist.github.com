@@ -38,26 +38,3 @@ Curabitur sodales ligula in libero. Sed dignissim lacinia nunc. Curabitur tortor
   </div>
 </section>
 
-<script>
-function httpGet(theUrl) {
-    var xmlHttp = null;
-
-    xmlHttp = new XMLHttpRequest();
-    xmlHttp.open( "GET", theUrl, false );
-    xmlHttp.send( null );
-    return xmlHttp.responseText;
-}
-// Deal with CORS
-var video_one = JSON.parse(httpGet("http://secristfamily.com:4000/remote/headers/http%3A%2F%2Fdata.riakcs.net%3A8080%2Fshared_files%2F001.mp4"));
-var video_two = JSON.parse(httpGet("http://secristfamily.com:4000/remote/headers/http%3A%2F%2Fdata.riakcs.net%3A8080%2Fshared_files%2F002.mp4"));
-
-// Replace Text for each video section
-document.getElementById("video_date_1").innerHTML = new Date(video_one['last_modified'] * 1000).toLocaleDateString();
-document.getElementById("video_date_2").innerHTML = new Date(video_two['last_modified'] * 1000).toLocaleDateString();
-
-// Replace Video Descriptions and Text
-// document.getElementById("video_desc_1").innerHTML = 
-// document.getElementById("video_text_1").innerHTML = 
-// document.getElementById("video_desc_2").innerHTML = 
-// document.getElementById("video_text_2").innerHTML = 
-</script>
