@@ -7,20 +7,22 @@ function updateMeta() {
 
 	var event_handler = function(e) {
 	  result = e.data;
-	  document.getElementById (
-	    result['date_node']).innerHTML = new Date(result['last_modified'] * 1000
-	  ).toLocaleDateString();
+	  if (result['title'] != null) {
+	    document.getElementById("video_title_" + result['worker_id']).innerHTML =
+	      result['title'];
+	  }
+	  if (result['description'] != null) {
+	    document.getElementById("video_desc_" + result['worker_id']).innerHTML =
+	      result['description'];
+	  }
+	  document.getElementById("video_date_" + result['worker_id']).innerHTML =
+	    new Date(result['last_modified'] * 1000).toLocaleDateString();
 	}
 
 	worker_1.addEventListener('message', event_handler, false);
 	worker_2.addEventListener('message', event_handler, false);
 
-	worker_1.postMessage({'date_node': 'video_date_1', 'url': url_base + url_resource + "001.mp4"});
-	worker_2.postMessage({'date_node': 'video_date_2', 'url': url_base + url_resource + "002.mp4"});
+	worker_1.postMessage({'worker_id': '1', 'url': url_base + url_resource + "001.mp4"});
+	worker_2.postMessage({'worker_id': '2', 'url': url_base + url_resource + "002.mp4"});
 
-	// Replace Video Descriptions and Text
-	// document.getElementById("video_desc_1").innerHTML = 
-	// document.getElementById("video_text_1").innerHTML = 
-	// document.getElementById("video_desc_2").innerHTML = 
-	// document.getElementById("video_text_2").innerHTML = 
 }
