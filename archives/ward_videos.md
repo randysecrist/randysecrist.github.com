@@ -17,7 +17,7 @@ If you would like to replace the title and description of this video, please sen
     </p>
   </div>
   <div class="panel-body">
-    <video height="270" id="001" src="http://data.riakcs.net:8080/shared_files/001.mp4" type="video/mp4" controls style="margin: auto; display: block;"></video>
+    <video height="270" id="001" src="https://s3.amazonaws.com/copper-hills-seventh/001.mp4" type="video/mp4" controls style="margin: auto; display: block;"></video>
   </div>
 </section>
 
@@ -34,6 +34,6 @@ If you would like to replace the title and description of this video, please sen
     </p>
   </div>
   <div class="panel-body">
-    <video height="270" id="002" src="http://data.riakcs.net:8080/shared_files/002.mp4" type="video/mp4" controls style="margin: auto; display: block;"></video>
+    <video height="270" id="002" src="https://s3.amazonaws.com/copper-hills-seventh/002.mp4" type="video/mp4" controls style="margin: auto; display: block;"></video>
   </div>
 </section>

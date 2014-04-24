@@ -1,6 +1,6 @@
 function updateMeta() {
 	var url_base = "http://secrist.io:8888";
-	var url_resource = "/remote/headers/http%3A%2F%2Fdata.riakcs.net%3A8080%2Fshared_files%2F";
+	var url_resource = "/remote/headers/http%3A%2F%2Fs3.amazonaws.com%2Fcopper-hills-seventh%2F";
 
 	var worker_1 = new Worker('/assets/js/lds/video_worker.js');
 	var worker_2 = new Worker('/assets/js/lds/video_worker.js');
