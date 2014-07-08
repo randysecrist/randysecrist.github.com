@@ -1,0 +1,352 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Riak: A Distributed Key Value Store</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <script src="http://gnab.github.io/remark/downloads/remark-latest.min.js" type="text/javascript"> </script>
+    <style type="text/css" media="screen">
+      @import url(http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+      @import url(http://fonts.googleapis.com/css?family=Droid+Serif);
+      @import url(http://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
+      body { font-family: 'Droid Serif'; }
+      h1, h2, h3 {
+        font-family: 'Yanone Kaffeesatz';
+        font-weight: 400;
+        margin-bottom: 0;
+        margin-top: 10px;
+      }
+      h1 { font-size: 3.5em; }
+      h2 { font-size: 3em; }
+      h3 { font-size: 1.6em; }
+      .inverse {
+        background: #272822;
+        color: #777872;
+        text-shadow: 0 0 20px #333;
+      }
+      .inverse h1, .inverse h2 {
+        color: #f3f3f3;
+        line-height: 0.8em;
+      }
+
+      pre {
+        border-left: 0.4em solid #d7d7d7;
+        padding: 1em !important;
+      }
+      code {
+        background: transparent !important;
+      }
+      a {
+        color: #F92672;
+        text-decoration: none;
+      }
+      .task {
+        float: right;
+        font-size: 0.9em;
+        padding-top: 0.6em;
+      }
+      .task a {
+        color: #080;
+        text-decoration: none;
+      }
+      .right {
+        float: right;
+        margin-left: 1em;
+      }
+      .pushdown {
+        margin-top: 12em;
+      }
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse
+
+# Riak: A Distributed Key Value Store
+
+### by [@basho](http://twitter.com/basho)
+
+---
+name: default
+category: riak_intro
+layout: true
+task: &nbsp;
+
+.task[{{task}}]
+
+---
+# In the beginning ...
+
+.center[![Social Networking]({{category}}/social_networking.png)]
+
+All built their __`own`__ Databases because no commercial database could meet their needs.
+---
+# The Amazon Paper
+
+.center[![Amazon Paper]({{category}}/amazon_paper.png)]
+
+---
+# About Basho
+
+.right[![Basho Customers]({{category}}/basho_customers.png)]
+
+- Originally inspired by Amazon Dynamo Paper
+- Founded 2008
+- Creators of Riak, the open-source distributed database.
+- ~ 100 Employees
+- Basho is worldwide:  Cambridge, London, Washington DC, San Francisco, and Tokyo
+- Basho customers include 1/3 of the Fortune 50
+
+---
+# About Riak
+
+- Designed for systems which require high-availability and scalability.
+- Not for departmental or non-critical systems.
+- Built-in replication and geo-location replication.
+
+.center[![Riak]({{category}}/riak.jpeg)]
+
+---
+# Riak Internals
+### [Open Source Architecture](http://aosabook.org/en/riak.html)
+
+.right[![Open Source Architecture]({{category}}/open_source_arch.jpg)]
+
+- Written in Erlang using OTP
+- Distributed Hash Tables (DHTs)
+- Consistent Hashing to __`place`__ Replicas
+- Gossip Protocol to __`share`__ common state.
+
+???
+Lightweight procs == massive scale.
+
+---
+# Moar Riak Internals
+
+- Automatic Partition Management
+- Preference Lists & Handoff
+
+.center[![Riak Ring]({{category}}/riak_ring.png)]
+
+---
+# Write Data by Key
+
+- N Val = Replication Factor, default is 3 copies
+- Only applies to local cluster.
+- R, W, PR, PW
+
+.center[![Riak Data Distribution]({{category}}/riak_data_distribution.png)]
+
+---
+class: center, middle, inverse
+
+# Building A Cluster
+
+---
+template: default
+layout: true
+
+### Building A Cluster
+
+---
+# riak-admin (1/4)
+
+    >./riak-admin member-status
+    ======= Membership =======
+    Status     Ring    Pending    Node
+    --------------------------
+    valid     100.0%      --      'dev3@127.0.0.1'
+    --------------------------
+    Valid:1 / Leaving:0 / Exiting:0 / Joining:0 / Down:0
+
+    >./riak-admin cluster join dev5@127.0.0.1
+    Success: staged join request for 'dev3@127.0.0.1' to 'dev5@127.0.0.1'
+
+---
+# riak-admin (2/4)
+
+    >./riak-admin member-status
+    ======= Membership =======
+    Status     Ring    Pending    Node
+    --------------------------
+    joining     0.0%      --      'dev3@127.0.0.1'
+    valid      50.0%      --      'dev4@127.0.0.1'
+    valid      50.0%      --      'dev5@127.0.0.1'
+    --------------------------
+
+---
+# riak-admin (3/4)
+
+    >./riak-admin cluster plan
+    ======= Staged Changes =======
+    Action         Details(s)
+    ------------------------------
+    join           'dev3@127.0.0.1'
+    ------------------------------
+---
+# riak-admin (4/4)
+
+    >./riak-admin cluster commit
+    Cluster changes committed
+
+    ======= Membership =======
+    Status     Ring    Pending    Node
+    --------------------------
+    valid      32.8%      --      'dev3@127.0.0.1'
+    valid      32.8%      --      'dev4@127.0.0.1'
+    valid      34.4%      --      'dev5@127.0.0.1'
+    --------------------------
+
+---
+layout: false
+class: center, middle, inverse
+
+# Getting Data In
+
+---
+template: default
+layout: true
+
+### Getting Data In
+
+---
+
+# HTTP or Protocol Buffers
+
+Using CURL
+
+    curl -X PUT http://localhost:8098/buckets/users/keys/UUID-123
+      -H "Content-Type: application/json"
+      -d '{"first":"Randy", "last", "Secrist"}'
+
+---
+layout: false
+class: center, middle, inverse
+
+# Getting Data Out
+
+---
+template: default
+layout: true
+
+### Getting Data Out
+
+---
+
+Using CURL
+
+    curl -X GET http://localhost:8098/buckets/users/keys/UUID-123
+
+- Common HTTP Verbs
+- (GET, POST, PUT, DELETE, HEAD)
+
+---
+template: default
+layout: false
+# Riak CS
+
+- Chunks files, builds manifest, uses Riak KV for storage.
+- Large Files (> 1 MB)
+- (S3 or Swift) API
+- Multi Tenant / Usage Metering
+
+.center[![Amazon Paper]({{category}}/riak_cs_internal.png)]
+
+---
+layout: false
+class: center, middle, inverse
+
+# Use Cases
+---
+class: center, middle
+
+## Geo Distributed Data
+
+---
+class: center, middle
+## Transaction Journaling
+---
+class: center, middle
+## Object Store
+---
+class: center, middle
+## Time Series
+
+???
+
+### High Concurrency Metric/Sensor Data
+### /
+### Internet of Things
+---
+class: center, middle
+## Distributed Cache
+---
+class: center, middle
+## Data As A Service
+---
+class: center, middle
+## (Session | Profile) Data at Scale
+---
+class: center, middle
+## Content At Scale
+### (Screen Shots, Videos, Achievements, Currency, Top Scores)
+---
+class: center, middle, inverse
+
+# Additional Resources & Reading
+---
+template: default
+
+# The Little Riak Book
+
+.right[![Little Riak Handbook]({{category}}/little_book.png)]
+
+By Eric Redmond:
+
+- [http://littleriakbook.com/](http://littleriakbook.com/)
+
+---
+template: default
+
+# Seven Databases in Seven Weeks
+
+.right[![Seven Databases in Seven Weeks]({{category}}/seven_databases.gif)]
+
+By Eric Redmond:
+
+- [http://shop.oreilly.com/product/9781934356920.do](http://shop.oreilly.com/product/9781934356920.do)
+
+---
+template: default
+
+# Must Read
+
+- [Basho Docs](http://docs.basho.com)
+- [Peter Balis:  Adventures in Distributed Systems](http://www.bailis.org/blog/)
+- [Aphyr:  Call Me Maybe - Riak](http://aphyr.com/posts/285-call-me-maybe-riak)
+
+.center[![Not Safe For Academia]({{category}}/nsf_academia.png)]
+
+???
+
+- Possibly not safe for academia.
+
+---
+layout: false
+class: center, middle, inverse
+
+# Questions?
+### [randy.secrist@gmail.com](http://randy.secrist.io)
+---
+layout: false
+class: center, middle, inverse
+
+# The End!
+
+    </textarea>
+    <script>
+      var slideshow = remark.create({ highlightLanguage: 'bash'});
+    </script>
+  </body>
+</html>
