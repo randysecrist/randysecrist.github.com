@@ -5,8 +5,12 @@ root:        /
 future:      true
 safe:        false
 lsi:         false
-pygments:    true
-markdown:    redcarpet
+highlighter: rouge
+markdown: kramdown
+kramdown:
+  input: GFM
+  auto_ids: true
+  syntax_highlighter: rouge
 
 permalink:   /:year/:month/:day/:title/
 paginate:    5

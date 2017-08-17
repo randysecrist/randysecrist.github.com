@@ -8,7 +8,7 @@ type:   primary
 Happy Valentines Day!
 
 Next week I am presenting a talk on some of the new features within the
-upcoming [Riak 2.0](/slides/riak_2_0) release as well as something 
+upcoming [Riak 2.0](/slides/riak_2_0) release as well as something
 currently called [Riak JSON](https://github.com/basho-labs/riak_json).
 
 #### Wait, What is Riak?
@@ -18,7 +18,7 @@ currently called [Riak JSON](https://github.com/basho-labs/riak_json).
 [Riak](http://docs.basho.com/riak/latest/)
 is a open source distributed database which is made by the
 [company](http://basho.com) I work for.  Riak has been around for a while
-and there are a number of 
+and there are a number of
 [great introductions](http://docs.basho.com/riak/latest/theory/why-riak/)
 found all over the internet.
 
@@ -101,7 +101,7 @@ serialization to JSON, and logging concerns:
 
 Using the Java / Scala library:
 
-```scala
+{% highlight scala %}
 import com.basho.riak.json._
 import com.basho.riak.json.Field.Type._
 
@@ -110,11 +110,11 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 
 val client = new Client("localhost", 10018)
 val collection = client.createCollection("squares")
-```
+{% endhighlight %}
 
 Define a document class:
 
-```scala
+{% highlight scala %}
 class MySquare (l:Int, w:Int) extends Document {
   def this() =  this(0, 0)
   @BeanProperty var key: String = _
@@ -124,11 +124,11 @@ class MySquare (l:Int, w:Int) extends Document {
   /* don't serialize this tuple */
   @JsonIgnore def getSize = Tuple2(length, width)
 }
-```
+{% endhighlight %}
 
 Define a schema:
 
-```scala
+{% highlight scala %}
 val schema = new Schema.Builder()
   .addField(new Field("length", INTEGER).setRequired(true))
   .addField(new Field("width", INTEGER).setRequired(true))
@@ -136,36 +136,36 @@ val schema = new Schema.Builder()
   .build()
 
 collection.setSchema(schema)
-```
+{% endhighlight %}
 
 Add some data, riak will generate the keys for you if you wish, or you
 may assign your own.
 
-```scala
+{% highlight scala %}
 val large_square = new MySquare(1024, 768)
 val normal_square = new MySquare(640, 480)
 collection.insert(large_square)
 collection.insert(normal_square)
-```
+{% endhighlight %}
 
 Query by key:
 
-```scala
+{% highlight scala %}
 val result = collection.findByKey("9tT49FHJoQImObmPYgVPRcB56T2", classOf[MySquare])
 result.getLength() => 1024
-```
+{% endhighlight %}
 
 Search!  Find One Thing:
 
-```scala
+{% highlight scala %}
 val q_string = "{\"length\": {\"$gt\": 300}}"
 val query = new Query(q_string, classOf[MySquare]);
 val single_result = collection.findOne(query)
-```
+{% endhighlight %}
 
 Find ALL the things!
 
-```scala
+{% highlight scala %}
 val many_results = collection.findAll(query)
 
 // documents are a java Collection
@@ -180,7 +180,7 @@ many_results.perPage(); => results per page, defaults to 100
 many_results.getDocuments.toArray(
   new Array[MySquare](many_results.getDocuments.size)
 )
-```
+{% endhighlight %}
 
 Requery with: `"$per_page":10` and `"$page":1` to control the pagination
 set.
@@ -189,23 +189,23 @@ Lastly, you can query Riak using a few different approaches:
 
 KV Style:
 
-```bash
+{% highlight bash %}
 'http://localhost:10018/types/squaresRJType/buckets/squares/keys/<key>'
-```
+{% endhighlight %}
 
 Riak Search 2.0 (Solr / Yokozuna) Style:
 
-```bash
+{% highlight bash %}
 'http://localhost:10018/search/squaresRJIndex?q=length:[640%20TO%20*]&wt=json'
-```
+{% endhighlight %}
 
 And finally cleanup:
 
-```scala
+{% highlight scala %}
 collection.remove(large_square)
 collection.remove(normal_square)
 collection.deleteSchema()
-```
+{% endhighlight %}
 
 #### Conclusion
 
@@ -214,7 +214,3 @@ there will continue to be gaps as we iterate, I feel that the 2.0 is a *step*
 in the right direction to achieve this.
 
 <img src="/assets/images/riak_2_0/basho-logo.png" style="margin: auto; display: block;" alt="Basho Technologies"/>
-
-
-
-
