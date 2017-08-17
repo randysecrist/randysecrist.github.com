@@ -8,6 +8,6 @@ This blog uses [Jekyll](http://jekyllrb.com) and is hosted on [Github Pages](htt
 
 To test changes on a local environment, simply run:
 
-```basho
+```bash
 bundle exec jekyll serve
 ```
