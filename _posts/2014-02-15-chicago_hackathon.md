@@ -55,7 +55,7 @@ function FetchCtrl($scope, $http, $templateCache) {
     $scope.code = null;
     $scope.response = null;
 
-    $http({method: $scope.method, url: $scope.url, headers: {'Authorization': 'OAuth mhealthv3-t6aiY7BJo64oytyDPDHXrg-S55f8IoyHdYsBeKquaQrYQ'}, cache: $templateCache}).
+    $http({method: $scope.method, url: $scope.url, headers: {'Authorization': 'OAuth <org>-<slug>-<digest>'}, cache: $templateCache}).
       success(function(data, status) {
         $scope.status = status;
         $scope.data = data;
@@ -147,7 +147,7 @@ function FetchCtrl($scope, $http, $templateCache) {
   // Init scope, used when page loads
   $scope.init = function () {
     $scope.method = 'GET';
-    $scope.url = 'https://api-mhealth.dev.attcompute.com/v3/ownership/GgVEp0xY37emkWi8Pq8Ot4bQO8H/document/chicago_green_roofs';
+    $scope.url = 'https://api.myjson.com/bins/l9afl';
     $scope.fetch();
   };
 }
@@ -162,7 +162,7 @@ function FetchCtrl($scope, $http, $templateCache) {
     </select>
     <button ng-click="fetch()">Load Map</button><br>
     <input type="text" ng-model="url" size="80"/>
-    <button ng-click="updateModel('GET', 'https://api-mhealth.dev.attcompute.com/v3/ownership/GgVEp0xY37emkWi8Pq8Ot4bQO8H/document/chicago_green_roofs')">Chicago Green Roof</button>
+    <button ng-click="updateModel('GET', 'https://api.myjson.com/bins/l9afl')">Chicago Green Roof</button>
     -->
   </div>
   
