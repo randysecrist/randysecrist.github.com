@@ -16,5 +16,5 @@ kramdown:
 permalink:   /:year/:month/:day/:title/
 paginate:    5
 recent_posts: 10
-
+plugins: [jekyll-paginate]
 exclude: [Gemfile, Gemfile.lock, README.md]
