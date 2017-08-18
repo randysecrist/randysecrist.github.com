@@ -6,7 +6,7 @@ type:   primary
 ---
 
 I recently re-discovered my github user page and looked upon it in horror. If
-you somehow saw this attrocity, please try to unsee it.
+you somehow saw this atrocity, please try to unsee it.
 
 Long ago, I ran my own web server at home and spent a lot of time doing a mix
 of varied consulting work that involved both the front and back end.  After
