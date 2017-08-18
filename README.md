@@ -1,6 +1,6 @@
 My technical blog.
 
-All content &copy; 2014 Randy Secrist.
+All content &copy; 2017 Randy Secrist.
 
 ## Local Environment
 
