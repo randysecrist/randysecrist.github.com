@@ -5,11 +5,29 @@ title: Archives
 
 <div id="blog-archives">
 
+	<h4 id="slide_decks">Slide Decks</h4>
+	<ol>
+		<li><a href="http://randy.secrist.io/slides/riak_intro.html#1">Riak Basic Intro</a></li>
+		<li><a href="http://randy.secrist.io/slides/riak_2_0/index.html#/">Riak JSON Introduction</a></li>
+		<li><a href="http://prezi.com/deesf7bthmil/osgi-with-eclipse-virgo">OSGi with Virgo</a></li>
+	</ol>
+
+	<h4 id="projects">Projects</h4>
+	<ol>
+		<li><a href="https://github.com/perhap/perhap_api">Perhap API</a></li>
+		<li><a href="https://github.com/basho-labs/rinamo">Rinamo (DynamoDB on Riak)</a></li>
+		<li><a href="https://github.com/basho-labs/riak_explorer">Riak Explorer (UI and API)</a></li>
+		<li><a href="https://github.com/drewkerrigan/riak-elixir-client">Riak Elixir Client</a></li>
+		<li><a href="https://github.com/randysecrist/ruby-hl7">Ruby HL7 Library</a></li>
+		<li><a href="https://github.com/basho/ripple-encryption">Ripple Encryption</a></li>
+		<li><a href="https://github.com/randysecrist/GEdit">Visual Graph Editor</a></li>
+	</ol>
+
 	{% for post in site.posts %}
 		<article class="post">
 			{% if post.external-url %}
 				<h1>
-					<a href="{{ post.external-url }}">{{ post.title }}</a> 
+					<a href="{{ post.external-url }}">{{ post.title }}</a>
                                         <a class="anchor" href="{{ site.baseurl}}{{ post.url }}">&#9875;</a>
 				</h1>
 			{% else %}
