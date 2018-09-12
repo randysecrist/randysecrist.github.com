@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Telephony - 2018-09-12</title>
+
+		<meta name="description" content="A SOFI Communications Component">
+		<meta name="author" content="Kasinath Nalla, Randy Secrist">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="/assets/reveal-2.6.1/css/reveal.min.css">
+		<link rel="stylesheet" href="/assets/reveal-2.6.1/css/theme/solarized.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="/assets/reveal-2.6.1/lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="/assets/reveal-2.6.1/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="/assets/reveal-2.6.1/lib/js/html5shiv.js"></script>
+		<![endif]-->
+
+		<script type="text/javascript">
+		  var _gaq = _gaq || [];
+		  _gaq.push(['_setAccount', 'UA-23047862-1']);
+		  _gaq.push(['_trackPageview']);
+
+		  (function() {
+		    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		  })();
+		</script>
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>Telephony</h1>
+					<h3>Introduction</h3>
+					<p>
+						<!-- <small>
+							by <a href="http://randy.secrist.io">Randy Secrist</a> / <a href="http://twitter.com/randysecrist">@randysecrist</a><br/>
+						</small> -->
+					</p>
+					<aside class="notes">
+						Overview & Recent Features
+					</aside>
+				</section>
+
+				<section>
+					<h2>Recent Features</h2>
+					<ul>
+						<li>Alternative Numbers</li>
+						<li>Caller ID</li>
+						<li>Money IVR</li>
+						<li>Outbound Funnel</li>
+					</ul>
+					<aside class="notes">
+						blah blah
+					</aside>
+				</section>
+
+				<section>
+					<h2>Alternative Numbers</h2>
+					<aside class="notes">
+					</aside>
+				</section>
+
+				<section>
+					<h2>Caller ID</h2>
+					<aside class="notes">
+					</aside>
+				</section>
+
+				<section>
+					<h2>Money IVR</h2>
+					<aside class="notes">
+					</aside>
+				</section>
+
+				<section>
+					<h2>Outbound Funnel</h2>
+					<aside class="notes">
+					</aside>
+				</section>
+
+				<section>
+					<h2>Outbound Funnel Design</h2>
+					<aside class="notes">
+					</aside>
+				</section>
+
+				<section>
+					<h1>THE END</h1>
+					<small><a href="http://sofi.com">sofi.org</a></small><br/>
+					<small><a href="">Kasinath Nalla</a></small><br/>
+					<small><a href="http://randy.secrist.io">randy.secrist.io<a></small>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="/assets/reveal-2.6.1/lib/js/head.min.js"></script>
+		<script src="/assets/reveal-2.6.1/js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: '/assets/reveal-2.6.1/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: '/assets/reveal-2.6.1/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '/assets/reveal-2.6.1/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '/assets/reveal-2.6.1/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '/assets/reveal-2.6.1/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: '/assets/reveal-2.6.1/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
