@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Telephony - 2018-09-12</title>
+
+		<meta name="description" content="A SOFI Communications Component">
+		<meta name="author" content="Kasinath Nalla, Randy Secrist">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="/assets/reveal-2.6.1/css/reveal.min.css">
+		<link rel="stylesheet" href="/assets/reveal-2.6.1/css/theme/night.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="/assets/reveal-2.6.1/lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="/assets/reveal-2.6.1/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="/assets/reveal-2.6.1/lib/js/html5shiv.js"></script>
+		<![endif]-->
+
+		<script type="text/javascript">
+		  var _gaq = _gaq || [];
+		  _gaq.push(['_setAccount', 'UA-23047862-1']);
+		  _gaq.push(['_trackPageview']);
+
+		  (function() {
+		    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		  })();
+		</script>
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>Telephony</h1>
+					<h3>Introduction</h3>
+					<p>
+						<small>
+							by <a href="http://randy.secrist.io">Randy Secrist</a> / <a href="http://twitter.com/randysecrist">@randysecrist</a><br/>
+						</small>
+					</p>
+					<aside class="notes">
+						Overview & Recent Features
+					</aside>
+				</section>
+
+				<section>
+					<h2>Recent Features</h2>
+					<ul>
+						<li>Alternative Numbers</li>
+						<li>Localized Caller ID</li>
+						<li>Money IVR</li>
+						<li>Outbound Funnel</li>
+					</ul>
+					<aside class="notes">
+						The first three shipped already in Q3.  Outbound ships next.
+					</aside>
+				</section>
+
+				<section>
+					<h2>Alternative Numbers</h2>
+					<aside class="notes">
+						Servicing provides numbers from various locations to find alternate
+						numbers that could be associated to a delinquent customer.  These
+						are added to the outbound dial list as part of each call record.
+
+						Known locations for alternative numbers are lexus nexus.
+					</aside>
+				</section>
+
+				<section>
+					<h2>Localized Caller ID</h2>
+					<aside class="notes">
+						One of our key metrics for outbound calls is RCP.  We are looking
+						more into who that is calculated and doing a A/B test to determine
+						if we can increase it by localizing and rotating the number used for
+						caller id.  The idea is that someone will be more likely to answer
+						the phone (for a servicing use case) if the number looks like it
+						comes from a local number.  If they begin to recognize the number
+						and block us; we rotate the number after a certain amount of time.
+
+						Under the A/B test we are able to carefully determine if this is a
+						feature that we will keep or further enhance.
+					</aside>
+				</section>
+
+				<section>
+					<h2>Money IVR</h2>
+					<p>(Phone System Integration)</p>
+					<br/>
+					<ul>
+						<div class="fragment">
+							<li>Balance</li>
+						</div>
+						<div class="fragment">
+							<li>Retrieve Routing Number</li>
+						</div>
+						<div class="fragment">
+							<li>Transaction Details</li>
+						</div>
+						<div class="fragment">
+							<li>Lock card/Unlock Card</li>
+						</div>
+						<div class="fragment">
+							<li>Order a Replacement Card</li>
+						</div>
+					</ul>
+					<aside class="notes">
+						As many of you know, we are planning to go public for banking
+						(the money product). It means we need to provide features for customers
+						when they call into SOFI.  We already provide a options to funnel
+						callers to a particular operations skill set.  We will next provide
+						account details over the incontact phone system.  Telephony will use
+						the same backend APIs that the SOFI online web and mobile app use.
+					</aside>
+				</section>
+
+				<section>
+					<section>
+						<h2>Outbound In Funnel V1</h2>
+						<p>(Making outbound calls to assist with onboarding customers)</p>
+						<ul>
+							<li>Version 1</li>
+							<li>Version 2</li>
+						</ul>
+						<aside class="notes">
+							What:
+
+							This feature focuses on the use case for making outbound calls for
+							the purpose of assisting operations with onboarding new SOFI customers.
+							(Which is why it is the IN funnel but using outbound calls).
+
+							Fundamental Outbound Call Requirement:
+
+							All outbound calls must be funneled through the rules in Telephony
+							and Gryphon to ensure TCPA compliance which will protect SOFI from
+							potential legal issues when contacting customers.  We must call people
+							at the right time taking into consideration several rules such as their
+							locations and customer history.
+						</aside>
+					</section>
+					<section>
+						<h2>Version 1</h2>
+						<ul>
+							<div class="fragment">
+								<li>Batch Delay -> Realtime</li>
+								<li>New Service: TSA (PrechecK)</li>
+								<li>Integration with Telephony</li>
+								<li>Integration with Activites</li>
+								<li>Integration with Communications</li>
+							</div>
+						</ul>
+						<aside class="notes">
+							There is a delay between when the outbound call batches are uploaded
+							and when the outbound call is actually made.  This first change will
+							do a check when the call is made to confirm SOFI product application
+							status to ensure that the call reason is still valid right before the
+							actual call is placed.  This will use a TSA (precheck) service in
+							combination with the communication service.
+						</aside>
+					</section>
+					<section>
+						<h2>Version 2</h2>
+						<ul>
+							<div class="fragment">
+								<li>Listening to Kafka</li>
+								<li>Retire Batch Processing</li>
+								<li>Retire Activity Client in TSA</li>
+							</div>
+						</ul>
+						<aside class="notes">
+							Currently the operational team is collecting weekly data and (in some
+							cases) manually uploading data into the InContact system.
+
+							This bypasses the telephony API which means that some outbound calls
+							are not vetted for TCPA and other SOFI compliance requirements. This
+							will be solved most likely during Q4 of 2018.
+
+							Design Changes:
+
+							Communications listens to kafka and sends requests to Telephony.
+							Servicing stops sending batches to Telephony.
+							TSA starts listening to Kafka.
+						</aside>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Outbound Funnel Design</h2>
+						<h3>Component diagram </h3>
+						<p><img src="../telephony/telephony-component.png"></p>
+					</section>
+				  <section>
+						<h2>Outbound Funnel Design</h2>
+  					<h3>Sequence diagram </h3>
+	  				<img src="../telephony/telephony-sequence.png">
+		  			<aside class="notes">
+			  		</aside>
+				  </section>
+				</section>
+
+				<section>
+					<h1>THE END</h1>
+					<small><a href="http://sofi.com">sofi.com</a></small><br/>
+					<small>Josh Jensen</small><br/>
+					<small>Kasinath Nalla</small><br/>
+					<small><a href="http://randy.secrist.io">randy.secrist.io<a></small><br/>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="/assets/reveal-2.6.1/lib/js/head.min.js"></script>
+		<script src="/assets/reveal-2.6.1/js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: '/assets/reveal-2.6.1/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: '/assets/reveal-2.6.1/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '/assets/reveal-2.6.1/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '/assets/reveal-2.6.1/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '/assets/reveal-2.6.1/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: '/assets/reveal-2.6.1/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
