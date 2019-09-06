@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>SOFI Engineering:  Test Harnesses</title>
+
+		<meta name="description" content="A strategy for slashing dependencies">
+		<meta name="author" content="Andrew Frieze, Josh Jensen, Randy Secrist">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="/assets/reveal-2.6.1/css/reveal.min.css">
+		<link rel="stylesheet" href="/assets/reveal-2.6.1/css/theme/night.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="/assets/reveal-2.6.1/lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="/assets/reveal-2.6.1/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="/assets/reveal-2.6.1/lib/js/html5shiv.js"></script>
+		<![endif]-->
+
+		<script type="text/javascript">
+		  var _gaq = _gaq || [];
+		  _gaq.push(['_setAccount', 'UA-23047862-1']);
+		  _gaq.push(['_trackPageview']);
+
+		  (function() {
+		    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		  })();
+		</script>
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h2>SOFI Engineering</h2>
+					<h3>Test Harnesses & Dependencies</h3>
+					<h4>2019-09-06</h4>
+					<p>
+						<medium>
+							<ul>
+								<li>Andrew Frieze</li>
+								<li>Josh Jensen</li>
+								<li>Kasi Nalla</li>
+								<li>Randy Secrist</li>
+							</ul>
+						</medium>
+					</p>
+					<aside class="notes"/>
+				</section>
+
+				<section>
+					<div>
+						<h2>Disclaimer</h2>
+						<ul>
+							<div class="fragment">
+								<p>
+								  We are simply ...
+								</p>
+							</div>
+							<div class="fragment">
+								<li>
+									Concerned (among many other things) with testing our service and what we put into production.
+								</li>
+							</div>
+						</ul>
+					</div>
+				</section>
+				<section>
+					<div>
+						<h2>Effort Required</h2>
+						<ul>
+							<div class="fragment">
+								<li>
+								  Gain: I don't need the whole stack to do my job.
+								</li>
+							</div>
+							<div class="fragment">
+								<li>
+								  Everyone has a different cost/benefit slider for effort involved.
+								</li>
+							</div>
+						</ul>
+					</div>
+					</section>
+				</section>
+
+				<section>
+					<h2>My First x86 Computer</h2>
+					<ul>
+						<li>IBM x286</li>
+						<li>256k RAM, expandable to 3.64 MB with expansion slots</li>
+						<li>20 or 40 MB hard drive</li>
+						<li>Floppy Drive</li>
+					</ul>
+					<aside class="notes">
+						The knowledge for a engineer to support a system with a lot of dependencies
+						within a distributed system is exceeding what is humanly possible.
+					</aside>
+				</section>
+
+				<section>
+					<h2>Typical 2014 Laptop</h2>
+					<ul>
+						<li>8 GB of memory (x 32,000)</li>
+						<li>4 core 2.5 GHZ (x 1000)</li>
+						<li>250 GB SSD (x10,000)</li>
+						<li>100 MB internet interface (x lots)</li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Logic ...</h2>
+					<div class="fragment">
+					  This machine is 1000x faster, so a 60 second boot time in the 90's
+					  should result in a 60 milisecond boot time today.
+				  </div>
+				</section>
+
+				<section>
+					<h2>What Went Wrong?</h2>
+				</section>
+
+				<section>
+					<h2>It Gets Worse</h2>
+					<div class="fragment">
+						<img src="images/python_dev.png">
+					</div>
+				</section>
+
+				<section>
+					<h2>Much Worse</h2>
+					<div class="fragment">
+					  <img src="images/big-data-landscape-2016.png">
+					</div>
+				</section>
+
+				<section>
+					<h2>More Integrations</h2>
+					<div class="fragment">
+					  <img src="images/liveperson.png">
+					  <img src="images/twilio.png">
+					</div>
+				</section>
+
+				<section>
+					<h2>More Integrations</h2>
+					<div class="fragment">
+						<img src="images/braze.png">
+						<img src="images/incontact.png">
+					</div>
+				</section>
+
+				<section>
+					<h2>More Integrations</h2>
+					<div class="fragment">
+						<img src="images/quovo.jpg">
+						<img src="images/zendesk.png">
+					</div>
+				</section>
+
+				<section>
+					<h2>Likely not going to stop ...</h2>
+				</section>
+
+				<section>
+					<h2>Dealing With Dependencies</h2>
+					<ul>
+						<div class="fragment">
+							<li>Interfaces & State Storage</li>
+						</div>
+						<div class="fragment">
+							<li>(Mock) Fork at the last possible layer</li>
+						</div>
+						<div class="fragment">
+							<li>Admin/Mock Controllers</li>
+						</div>
+						<div class="fragment">
+							<li>Test Clients</li>
+						</div>
+						<div class="fragment">
+							<li>REPL (Read Eval Print Loop) Tools</li>
+						</div>
+					</ul>
+				</section>
+
+				<section>
+					<section>
+						<div>
+							<h2>Define Test Data</h2>
+							<pre><code data-trim>
+							customer:
+  taxId: 590121328
+  phone: 801-803-8130
+  city: Sandy
+  state: UT
+  postal_code: 84092
+
+loan:
+  - [applicationId: 712, productType: PL, productStatus: FUNDED, interestRateLockDate: 1-7-2019,
+     loanId: 2158, chargeOffBal: 216.39, delinquentAmount: 9843.21, delinquentStart: 12-20-2018]
+
+tsa:
+  - [applicationId: 712, status: true, routeName: ""]
+
+wealth:
+
+money:
+    accountNumber: 8932352
+    routingNumber: 9128773
+    availableBalance: 893.18
+    debitCardFrozen: false
+    balance: 4389.23
+    openedOn: '2018-10-01'
+    transactions:
+      - [transactionDate: 1-9-2019, transactionAmount: 13.19, transactionStatus: "", transactionStatusDesc: ""]
+							</code></pre>
+						</div>
+					</section>
+					<section>
+						<div>
+							<h2>Test Specs</h2>
+							<pre><code data-trim>
+								spec.nextStep(
+new MockTwilioLookupDataStep<>(serviceDiscovery, phoneNumber, new PhoneData().setPhoneType(phoneType)))
+.nextStep(new MockTwilioCallbackDataStep<>(serviceDiscovery, providerSid, callbackData(phoneNumber, errorCode)))
+.storeOutputToBlackboard("callback")
+.nextStep(new HttpRequestPostStep<>("sms", "sms", (i) -> "v2/public/callback/sms/" + smsUuid))
+.nextStep(new HttpRequestWithForm(new HashMap<>() {{
+	put("messageSid", providerSid);
+	put("messageStatus", status);
+}}))
+.nextStep(new TwilioAuthenticationStep(twilioUsername, twilioPassword))
+.nextStep(new EvaluateHttpStatusResponseStep<>(204))
+.setNextStepWithBlackboardValue("callback", CallbackData.class, new ExpectedKafkaEventStep<>(
+	kafkaCaptor,
+	KafkaTopics.Domain.SMS_MESSAGE_DETAIL,
+	2000L,
+	(callback) -> smsUuid,
+	validateCallback(status),
+	(record) -> record))
+							</code></pre>
+						</div>
+					</section>
+
+					<section>
+						<div>
+							<h2>Mock Controllers</h2>
+							<pre><code data-trim>
+@Profile({"dev"})
+@RequestMapping(value = Routes.FEATURE_CUSTOMER_SERVICE, method = {RequestMethod.POST})
+public ResponseEntity<> toggleCustomerService(@RequestBody ToggleFunctionalityRequest config) {
+    if (config.isEnabled()) {
+        log.info("Configuring Customer to use customerService");
+        Customer.configureClient(serviceDiscovery, "sms");
+        this.customerServiceEnabled = true;
+    } else {
+        log.info("Configuring Customer to use mock-service instead of CustomerService on");
+        TestHarnessCustomersClient testHarnessCustomersClient = TestHarnessCustomersClient.newInstance(serviceDiscovery, kafkaProducerProvider);
+        Customer.configureClient(testHarnessCustomersClient);
+        this.customerServiceEnabled = false;
+    }
+    return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+}
+						  </code></pre>
+						</div>
+					</section>
+
+					<section>
+						<div>
+							<h2>REPL: Test Blob Store</h2>
+							<pre><code data-trim>
+iex(telephony_mock@127.0.0.1)1> MockData.inspect
+%{data: %{}}
+iex(telephony_mock@127.0.0.1)2> Consul.find("google-api-proxy")
+{:ok,
+ [
+   %SoFI.Consul.Service{
+     address: "10.0.17.152",
+     datacenter: "dc1",
+     name: "google-api-proxy",
+     port: 9185
+   }
+ ]}
+							</code></pre>
+						</div>
+					</section>
+
+				</section>
+
+				<section>
+					<h2>Harness Examples</h2>
+					<ul>
+						<li><a href="https://gitlab.com/sofiinc/comm/sms-test">SMS Test</a></li>
+						<li><a href="https://gitlab.com/sofiinc/comm/comms-compliance-test">Compliance Test</a></li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Mock Clients</h2>
+					<ul>
+						<li><a href="https://gitlab.com/sofiinc/comm/test-harness-core/tree/master/customers-mock-client">Customers</a></li>
+						<li><a href="https://gitlab.com/sofiinc/comm/test-harness-core/tree/master/twilio-mock-client">Twilio</a></li>
+						<li>A bunch of informal ones buried in <a href="https://gitlab.com/sofiinc/comm/telephony/tree/master/src/main/java/com/sofi/telephony/bal/services/external">Telephony</a></li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Handy Repositories</h2>
+					<ul>
+						<li><a href="https://gitlab.com/sofiinc/comm/test-harness-core">Test Harnesses</a></li>
+						<li><a href="https://gitlab.com/sofiinc/comm/telephony-mock">Test Blob Store</a></li>
+					</ul>
+				</section>
+
+				<section>
+					<h2>More Background Information</h2>
+					<ul>
+						<li><a href="https://engblog.sofi.com/?p=2809">Why Kafka / Available Consistency</a></li>
+					</ul>
+				</section>
+
+				<section>
+					<h1>THE END</h1>
+					<p>&nbsp;</p>
+					<p>
+						<h2>Questions?</h2>
+					</p>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="/assets/reveal-2.6.1/lib/js/head.min.js"></script>
+		<script src="/assets/reveal-2.6.1/js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: '/assets/reveal-2.6.1/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: '/assets/reveal-2.6.1/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '/assets/reveal-2.6.1/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '/assets/reveal-2.6.1/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '/assets/reveal-2.6.1/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: '/assets/reveal-2.6.1/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
