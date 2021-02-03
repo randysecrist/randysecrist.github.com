@@ -1,0 +1,346 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>Member Chat At SOFI - 2020-02-03</title>
+
+		<meta name="description" content="Presentation to the Member Team">
+		<meta name="author" content="Randy Secrist">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="/assets/reveal-2.6.1/css/reveal.min.css">
+		<link rel="stylesheet" href="/assets/reveal-2.6.1/css/theme/night.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="/assets/reveal-2.6.1/lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', use the PDF print sheet -->
+		<script>
+			document.write( '<link rel="stylesheet" href="/assets/reveal-2.6.1/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="/assets/reveal-2.6.1/lib/js/html5shiv.js"></script>
+		<![endif]-->
+
+		<script type="text/javascript">
+		  var _gaq = _gaq || [];
+		  _gaq.push(['_setAccount', 'UA-23047862-1']);
+		  _gaq.push(['_trackPageview']);
+
+		  (function() {
+		    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+		    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+		    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		  })();
+		</script>
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<div class="slides">
+				<section>
+					<h2>Member Eng/Arch Bi-Weekly</h2>
+					<h3>Chat Platform - 2020-02-03</h3>
+					<p>
+						<small>
+							by <a href="http://randy.secrist.io">Randy Secrist</a>
+						</small>
+					</p>
+					<img src="https://s3-eu-west-1.amazonaws.com/tpd/logos/5605d6460000ff000583b7d2/0x0.png">
+					<aside class="notes"/>
+				</section>
+
+				<section>
+					<h2>The Team</h2>
+					<ul>
+						<div class="fragment">
+							<li>Sachin Gandhi (Product Manager)</li>
+							<li>Kimberly Miller (Project Manager)
+							<li>Ryan Collary (Program Manager)
+							<li>Kasi Nalla (Engineering Manager)</li>
+					  </div>
+						<br/>
+						<div class="fragment">
+							<li>Kristin Megnniss (Analyst)</li>
+							<li>Jeremy Carlton (Engineer)</li>
+							<li>Josh Jensen (Engineer)</li>
+							<li>Randy Secrist (Engineer)</li>
+						</div>
+					</ul>
+					<aside class="notes"/>
+				</section>
+
+				<section>
+					<section>
+						<h2>Problem(s)?</h2>
+						<br/>
+						<ul>
+							<div class="fragment">
+								<li><a href="https://www.sofi.com/dashboard/contact">Contact Us</a></li>
+							</div>
+							<br/>
+							<div class="fragment">
+								<li><a href="https://support.sofi.com/hc/en-us">Help Center</a></li>
+							</div>
+							<br/>
+							<div class="fragment">
+								<li>Build vs Buy?</li>
+							</div>
+						</ul>
+						<br/>
+						<!-- <p>Hi</p> -->
+						<aside class="notes">
+							Members do something ... they:  Contact Us
+						</aside>
+					</section>
+					<section>
+						<h2>Legacy Experience</h2>
+						<br/>
+						<p>(NICE InContact)</p>
+						<img src="../sofi_chat/incontact_chat.png" style="width:350px;height:550px;">
+					</section>
+				</section>
+
+				<section>
+					<img src="../sofi_chat/member_contact_pref.png">
+				</section>
+
+				<section>
+					<h2>Cradle To Prod</h2>
+					<ul>
+						<div class="fragment">
+							<li>
+								<a href="https://docs.google.com/document/d/1B7OBHbSQjerQMhL9p84IySZDpxEPII3bVyI-UVbTjto/edit?usp=sharing">Tech Committee Proposal</a>
+							</li>
+						</div>
+						<br/>
+						<div class="fragment">
+							<li>ZenDesk AnswerBot (Retired)</li>
+							<br/>
+							<li><a href="https://www.ada.cx/">Ada AI ChatBot</a></li>
+						</div>
+					</ul>
+				</section>
+
+				<section>
+					<h2>10,000ft View</h2>
+					<img src="../sofi_chat/current_reality.png" style="width:700px;height:500px;">
+				</section>
+
+				<section>
+					<h2>Use Cases</h2>
+					<ul>
+						<li>Proactive</li>
+						<li>Reactive</li>
+						<br/>
+						<div class="fragment">
+							<li><a href="https://gitlab.com/sofiinc/comm/app/chat#integration-guide">Integration Guide</a></li>
+						</div>
+					</ul>
+				</section>
+
+				<section>
+					<h2>Tenant Space</h2>
+					<ul>
+						<li>SOFI</li>
+						<li>SAMSUNG</li>
+						<li>... n  ...</li>
+					</ul>
+				</section>
+
+				<section>
+					<section>
+						<h2>Product Integrations</h2>
+						<ul>
+							<div class="fragment">
+								<li>Money</li>
+							</div>
+							<div class="fragment">
+								<li>Invest</li>
+							</div>
+							<div class="fragment">
+								<li>Personal Loans</li>
+							</div>
+							<div class="fragment">
+								<li>Student Loans</li>
+							</div>
+							<div class="fragment">
+								<li>At Work (TBD)</li>
+							</div>
+							<div class="fragment">
+								<li>Credit Card (TBD)</li>
+							</div>
+							<br/>
+							<div class="fragment">
+								<li>SAMSUNG</li>
+							</div>
+						</ul>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>SAMSUNG</h2>
+						<img src="../sofi_chat/samsung_help_center.jpg" width="300" height="550">
+					</section>
+					<section>
+						<h2>SAMSUNG</h2>
+						<img src="../sofi_chat/samsung_chat.jpg" width="300" height="550">
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>SOFI Integrations</h2>
+						<br/>
+						<p>(Custom Routing Possible)</p>
+						<br/>
+						<ul>
+							<div class="fragment">
+								<li>Customer and Product Data: (customers, product-gateway)</li>
+							</div>
+							<div class="fragment">
+								<li>Money: Balances, Transactions, Debit Card Status, Restrictions, Linking</li>
+							</div>
+							<div class="fragment">
+								<li>Lending:  Loan Status</li>
+							</div>
+							<div class="fragment">
+								<li>Data Warehouse: Events via Kafka / Tableu (TBD)</li>
+							</div>
+						</ul>
+					</section>
+					<section>
+						<h2>Third Party</h2>
+						<br/>
+						<ul>
+							<div class="fragment">
+								<li>Ada:  Provides the Chat Bot & Member UI</li>
+							</div>
+							<div class="fragment">
+								<li>Zendesk:  Surface agent (department) status, queue size, wait times.</li>
+							</div>
+							<div class="fragment">
+								<li>Metrics & Events: Datadog, Javscript API</li>
+							</div>
+							<div class="fragment">
+								<li>Qualtrics:  NPS Surveys (TBD)</li>
+							</div>
+						</ul>
+					</section>
+					<section>
+						<h2>Internals</h2>
+						<br/>
+						<ul>
+								<li>Thymeleaf: (Templating)</li>
+								<li>Feign: (REST Client)</li>
+								<li>Security: Authorize, Bouncer, Redis, Chat, JWT</li>
+								<li>Test Harness; Smoke Tests via Selenium</li>
+						</ul>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Metrics</h2>
+						<br/>
+						<p>Containment Rate</p>
+						<br/>
+						<p>Loan Conversions</p>
+						<br/>
+						<p><a href="https://app.datadoghq.com/dashboard/v4p-kma-hbb/ck-chat?from_ts=1612381827909&live=true&to_ts=1612385427909">Data Dog Dashboard</a></p>
+					</section>
+					<section>
+						<img src="../sofi_chat/datadog_proactive.png">
+					</section>
+					<section>
+						<img src="../sofi_chat/datadog_reactive.png">
+					</section>
+				</section>
+
+				<section>
+					<h2>Hands On!</h2>
+					<br/>
+					<p><a href="https://chatbot-external-0.sofitest.com/chat/v1/mobile/sofi?product=money">Test Environment</a></p>
+					<br/>
+					<p>money+2008@sofitest.com</p>
+					<p>password1</p>
+					<br/>
+					<br/>
+					<p><a href="https://www.sofi.com/dashboard/contact">Production</a></p>
+				</section>
+
+				<section>
+					<h2>Special Thanks To:</h2>
+					<ul>
+						<div class="fragment">
+							<li>Forrest Miller</li>
+							<li>Eran Shtiegman</li>
+							<li>Carrie Farnsworth</li>
+							<li>Scott Wiseman</li>
+							<li>Andrew Frieze</li>
+							<li>Richard Bolt</li>
+						</div>
+						<br/>
+						<p>All product owners whom have adopted this solution.</p>
+					</ul>
+					<aside class="notes"/>
+				</section>
+
+				<section>
+					<h1>THE END</h1>
+					<br/>
+					<p><a href="https://sofi.slack.com/archives/C013ZV26V7C">🙏🏻 SEND US FEEDBACK 🙏🏻</a></p>
+					<p><a href="https://gitlab.com/sofiinc/comm/app/chat">Gitlab Repository</a></p>
+					<img src="https://s3-eu-west-1.amazonaws.com/tpd/logos/5605d6460000ff000583b7d2/0x0.png">
+					<small><a href="http://randy.secrist.io">randy.secrist.io<a></small><br/>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="/assets/reveal-2.6.1/lib/js/head.min.js"></script>
+		<script src="/assets/reveal-2.6.1/js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: '/assets/reveal-2.6.1/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: '/assets/reveal-2.6.1/plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '/assets/reveal-2.6.1/plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: '/assets/reveal-2.6.1/plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: '/assets/reveal-2.6.1/plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: '/assets/reveal-2.6.1/plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
